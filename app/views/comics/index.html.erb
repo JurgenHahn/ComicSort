@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1>The Amazing Spider-Man Vol.<%=params["volume"]%></h1>
+You own <%=@comics.where(owned: true).count%> / <%=@comics.count%> issues in this volume.
+
+<%if @comics.count > 0%>
+You own <%=@comics.where(owned: true).count/@comics.count*100%>% of the issues in this volume.
+<%else%>
+You own 0% of the issues in this volume.
+<%end%>
+<%= render 'table' %>

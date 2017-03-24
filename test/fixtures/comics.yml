@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  volume: 1
+  issue: 1
+  writer: MyString
+  penciler: MyString
+  inker: MyString
+  colorist: MyString
+  editor: MyString
+  editor_in_chief: MyString
+
+two:
+  title: MyString
+  volume: 1
+  issue: 1
+  writer: MyString
+  penciler: MyString
+  inker: MyString
+  colorist: MyString
+  editor: MyString
+  editor_in_chief: MyString
