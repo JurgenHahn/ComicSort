@@ -11,10 +11,12 @@ You own 0% of the issues in this volume.
 <!-- <%= render 'table' %> -->
 <div class="container">
   <div class="row">
-    <%=@comics.each do |comic| %>
-      <div class="thumb-nail col-xs-4 col-lg-3">
-        <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic)%></div>
-        <div>Vol.<%=comic.volume%> #<%=comic.issue%></div>
+    <%@comics.each do |comic| %>
+      <div class="col-xs-4 col-lg-3">
+        <div class="thumb-nail">
+          <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic)%></div>
+          <div>Vol.<%=comic.volume%> #<%=comic.issue%></div>
+        </div>
       </div>
     <%end%>
   </div>
