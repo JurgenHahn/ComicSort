@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>The Amazing Spider-Man Vol.<%=params["volume"]%></h1>
-You own <%=@comics.where(owned: true).count%> / <%=@comics.count%> issues in this volume.
+<% if @comics.blank? %>
+  <h4>There are no comics containing the term <%= params[:search] %>.</h4>
+<% end %>
 
+<h1>The Amazing Spider-Man Vol.<%=params["volume"]%></h1>
+You own <%=@comics.where(owned: true).count%> / <%=@comics.count%> of these issues.
 <%if @comics.count > 0%>
-You own <%=@comics.where(owned: true).count/@comics.count*100%>% of the issues in this volume.
+You own <%=@comics.where(owned: true).count/@comics.count*100%>% of these issues.
 <%else%>
-You own 0% of the issues in this volume.
+You own 0% of these issues.
 <%end%>
-<!-- <%= render 'table' %> -->
 <div class="container">
   <div class="row">
     <%@comics.each do |comic| %>

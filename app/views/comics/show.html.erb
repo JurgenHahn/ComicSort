@@ -1,7 +1,4 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Edit', edit_comic_path(@comic) %> |
-<%= link_to 'Back', comics_path({:volume => @comic.volume}) %> |
-<%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
 <div class="wrapper container">
   <div class="row">
 
@@ -51,6 +48,15 @@
         <p>
           <strong>Editor-in-Chief:</strong>
           <%= @comic.editor_in_chief %>
+        </p>
+        <p>
+          <strong>Tags:</strong>
+          <%= @comic.tags %>
+        </p>
+        <p>
+          <%= link_to 'Back', comics_path({:volume => @comic.volume}) %> |
+          <%= link_to 'Edit', edit_comic_path(@comic) %> |
+          <%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
         </p>
       </div>
 

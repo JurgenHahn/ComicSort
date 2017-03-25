@@ -4,7 +4,11 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.json
   def index
-    @comics = Comic.list_comics.where(volume: params["volume"])
+      if params[:search]
+        @comics = Comic.search(params[:search]).list_comics
+      else
+        @comics = Comic.list_comics.where(volume: params["volume"])
+      end
   end
 
   def need_list
@@ -74,6 +78,6 @@ class ComicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
-      params.require(:comic).permit(:title, :volume_link, :volume, :cover_artist, :letterer, :issue, :price, :cover, :owned, :writer, :penciler, :inker, :colorist, :editor, :editor_in_chief)
+      params.require(:comic).permit(:title, :tags, :volume_link, :volume, :cover_artist, :letterer, :issue, :price, :cover, :owned, :writer, :penciler, :inker, :colorist, :editor, :editor_in_chief)
     end
 end
