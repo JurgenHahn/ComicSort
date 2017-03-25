@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Edit', edit_comic_path(@comic) %> |
+<%= link_to 'Back', comics_path({:volume => @comic.volume}) %> |
+<%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
 <div class="wrapper container">
   <div class="row">
 
@@ -55,6 +57,3 @@
 
   </div>
 </div>
-
-<%= link_to 'Edit', edit_comic_path(@comic) %> |
-<%= link_to 'Back', comics_path({:volume => @comic.volume}) %>
