@@ -8,7 +8,7 @@
       <div class="credits col-xs-6">
         <div class="issue">
           <strong>The Amazing Spider-Man</strong>
-          <p>Volume <%= @comic.volume %> Issue <%= @comic.issue %></p>
+          <p>Volume <%= @comic.volume %> Issue <%= number_with_precision(@comic.issue, strip_insignificant_zeros: true) %></p>
         </div>
 
         <p>
@@ -58,8 +58,12 @@
           <%= link_to 'Edit', edit_comic_path(@comic) %> |
           <%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
         </p>
+        <p>
+          <%= link_to 'Next Issue', comic_path %>
+        </p>
       </div>
 
 
   </div>
 </div>
+<%console%>

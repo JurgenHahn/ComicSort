@@ -7,7 +7,8 @@ class ComicsController < ApplicationController
       if params[:search]
         @comics = Comic.search(params[:search]).list_comics
       else
-        @comics = Comic.list_comics.where(volume: params["volume"])
+        @comics = Comic.where(volume: params["volume"]).list_comics
+        @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
       end
   end
 

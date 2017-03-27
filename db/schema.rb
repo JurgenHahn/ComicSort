@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325214201) do
+ActiveRecord::Schema.define(version: 20170325221037) do
 
   create_table "comics", force: :cascade do |t|
     t.string   "title"
     t.integer  "volume"
-    t.integer  "issue"
+    t.float    "issue"
     t.string   "writer"
     t.string   "penciler"
     t.string   "inker"
