@@ -68,16 +68,17 @@
             </p>
 
             <p>
-                <%unless @previous_comic.nil? %>
-                  <p><%= link_to 'Previous Issue', comic_path(:id => @previous_comic.id, :volume =>@previous_comic.volume, :issue => @previous_comic.issue) %>
+                <p><%unless @previous_comic.nil? %>
+                  <%= link_to 'Previous Issue', comic_path(:id => @previous_comic.id, :volume =>@previous_comic.volume, :issue => @previous_comic.issue) %>
                 <%else%>
-                  <p>Previous Issue
+                  Previous Issue
                 <%end%>
                   |
                 <%unless @next_comic.nil? %>
-                  <%= link_to 'Next Issue', comic_path(:id => @next_comic.id, :volume =>@next_comic.volume, :issue => @next_comic.issue) %></p>
+                  <%= link_to 'Next Issue', comic_path(:id => @next_comic.id, :volume =>@next_comic.volume, :issue => @next_comic.issue) %>
                 <%else%>
-                  Next Issue</p>
+                  Next Issue
+                  </p>
                 <%end%>
             </p>
 
