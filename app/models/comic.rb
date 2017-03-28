@@ -4,6 +4,9 @@ class Comic < ApplicationRecord
     Comic.all.order(:volume).order(:issue)
   end
 
+  def next_comic
+  end
+
   def self.search(search)
     where("cover_artist LIKE ?
       OR writer LIKE ?

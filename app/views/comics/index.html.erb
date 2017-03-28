@@ -18,7 +18,7 @@ You own <%=@comics.where(owned: true).count%> / <%=@comics.count%> of these issu
     <%@comics.each do |comic| %>
       <div class="col-xs-3">
         <div class="thumb-nail">
-          <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic) %></div>
+          <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume, :id => comic.id}) %></div>
           <div>Vol.<%=comic.volume%> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
                 <!-- , :class => "img-responsive" -->
         </div>

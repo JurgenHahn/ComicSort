@@ -1,6 +1,5 @@
 class ComicsController < ApplicationController
   before_action :set_comic, only: [:show, :edit, :update, :destroy]
-
   # GET /comics
   # GET /comics.json
   def index
@@ -18,7 +17,9 @@ class ComicsController < ApplicationController
   # GET /comics/1
   # GET /comics/1.json
   def show
+    
   end
+
 
   # GET /comics/new
   def new
@@ -79,6 +80,6 @@ class ComicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
-      params.require(:comic).permit(:title, :tags, :volume_link, :volume, :cover_artist, :letterer, :issue, :price, :cover, :owned, :writer, :penciler, :inker, :colorist, :editor, :editor_in_chief)
+      params.require(:comic).permit(:id, :title, :tags, :volume_link, :volume, :cover_artist, :letterer, :issue, :price, :cover, :owned, :writer, :penciler, :inker, :colorist, :editor, :editor_in_chief)
     end
 end

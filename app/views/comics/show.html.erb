@@ -1,69 +1,89 @@
+<% @previous_comic = (Comic.where("issue < :issue AND volume == :volume", {issue: params[:issue], volume: params[:volume]}).order('volume DESC').order('issue DESC').limit(1))[0] %>
+<% @next_comic = (Comic.where("issue > :issue AND volume == :volume", {issue: params[:issue], volume: params[:volume]}).order('volume').order('issue').limit(1))[0]%>
+
 <p id="notice"><%= notice %></p>
 <div class="wrapper container">
-  <div class="row">
+    <div class="row">
 
-      <div class="cover col-xs-6">
-        <%= image_tag "#{@comic.cover}", size: "292x443" %>
-      </div>
-      <div class="credits col-xs-6">
-        <div class="issue">
-          <strong>The Amazing Spider-Man</strong>
-          <p>Volume <%= @comic.volume %> Issue <%= number_with_precision(@comic.issue, strip_insignificant_zeros: true) %></p>
+        <div class="cover col-xs-6">
+            <%= image_tag "#{@comic.cover}", size: "292x443" %>
         </div>
 
-        <p>
-          <strong>Cover Artists:</strong>
-          <%= @comic.cover_artist %>
-        </p>
-        <p>
-          <strong>Writers:</strong>
-          <%= @comic.writer %>
-        </p>
+        <div class="credits col-xs-6">
+            <div class="issue">
+                <strong>The Amazing Spider-Man</strong>
+                <p>Volume
+                    <%= @comic.volume %>
+                    Issue
+                    <%= number_with_precision(@comic.issue, strip_insignificant_zeros: true) %></p>
+            </div>
 
-        <p>
-          <strong>Pencilers:</strong>
-          <%= @comic.penciler %>
-        </p>
+            <p>
+                <strong>Cover Artists:</strong>
+                <%= @comic.cover_artist %>
+            </p>
+            <p>
+                <strong>Writers:</strong>
+                <%= @comic.writer %>
+            </p>
 
-        <p>
-          <strong>Inkers:</strong>
-          <%= @comic.inker %>
-        </p>
+            <p>
+                <strong>Pencilers:</strong>
+                <%= @comic.penciler %>
+            </p>
 
-        <p>
-          <strong>Colourists:</strong>
-          <%= @comic.colorist %>
-        </p>
+            <p>
+                <strong>Inkers:</strong>
+                <%= @comic.inker %>
+            </p>
 
-        <p>
-          <strong>Letterers:</strong>
-          <%= @comic.letterer %>
-        </p>
+            <p>
+                <strong>Colourists:</strong>
+                <%= @comic.colorist %>
+            </p>
 
-        <p>
-          <strong>Editors:</strong>
-          <%= @comic.editor %>
-        </p>
+            <p>
+                <strong>Letterers:</strong>
+                <%= @comic.letterer %>
+            </p>
 
-        <p>
-          <strong>Editor-in-Chief:</strong>
-          <%= @comic.editor_in_chief %>
-        </p>
-        <p>
-          <strong>Tags:</strong>
-          <%= @comic.tags %>
-        </p>
-        <p>
-          <%= link_to 'Back', comics_path({:volume => @comic.volume}) %> |
-          <%= link_to 'Edit', edit_comic_path(@comic) %> |
-          <%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
-        </p>
-        <p>
-          <%= link_to 'Next Issue', comic_path %>
-        </p>
-      </div>
+            <p>
+                <strong>Editors:</strong>
+                <%= @comic.editor %>
+            </p>
 
+            <p>
+                <strong>Editor-in-Chief:</strong>
+                <%= @comic.editor_in_chief %>
+            </p>
 
-  </div>
+            <p>
+                <strong>Tags:</strong>
+                <%= @comic.tags %>
+            </p>
+
+            <p>
+                <%= link_to 'Back', comics_path({:volume => @comic.volume}) %>
+                |
+                <%= link_to 'Edit', edit_comic_path(@comic) %>
+                |
+                <%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
+            </p>
+
+            <p>
+                <%unless @previous_comic.nil? %>
+                  <p><%= link_to 'Previous Issue', comic_path(:id => @previous_comic.id, :volume =>@previous_comic.volume, :issue => @previous_comic.issue) %>
+                <%else%>
+                  <p>Previous Issue
+                <%end%>
+                  |
+                <%unless @next_comic.nil? %>
+                  <%= link_to 'Next Issue', comic_path(:id => @next_comic.id, :volume =>@next_comic.volume, :issue => @next_comic.issue) %></p>
+                <%else%>
+                  Next Issue</p>
+                <%end%>
+            </p>
+
+        </div>
+    </div>
 </div>
-<%console%>
