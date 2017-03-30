@@ -43,6 +43,10 @@ $(document).ready(function() {
     });
   });
 
+  $('.comic-details').on('click', '.back-link', function(event){
+    event.preventDefault();  
+  });
+
   $('body').on('click', function(event) {
     $('.comic-details').css('display', 'none')
   });
