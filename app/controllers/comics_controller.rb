@@ -17,8 +17,12 @@ class ComicsController < ApplicationController
   # GET /comics/1
   # GET /comics/1.json
   def show
-      @previous_comic = (Comic.where("(issue < :issue AND volume == :volume) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).order('volume DESC').order('issue DESC').limit(1))[0]
-      @next_comic = (Comic.where("(issue > :issue AND volume == :volume) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).order('volume').order('issue').limit(1))[0]
+      @previous_comic = (Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).order('volume DESC').order('issue DESC').limit(1))[0]
+      @next_comic = (Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).order('volume').order('issue').limit(1))[0]
+
+    if request.xhr?
+      render layout: false
+    end
   end
 
 

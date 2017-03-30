@@ -1,28 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <% if @comics.blank? %>
-  <h4>There are no comics containing the term <%= params[:search] %>.</h4>
+  <h4>There are no comics containing the term
+    <%= params[:search] %>.</h4>
 <% end %>
 
-<h1>The Amazing Spider-Man Vol.<%=params["volume"]%></h1>
-You own <%=@comics.where(owned: true).count%> / <%=@comics.count%> of these issues.
+<h1 #comic-title>The Amazing Spider-Man Vol.<%=params["volume"]%></h1>
+You own
+<%=@comics.where(owned: true).count%>
+/
+<%=@comics.count%>
+of these issues.
 
 <% if @comics.count > 0 %>
-  You own <%=number_with_precision(@percentage_owned, :precision => 2, strip_insignificant_zeros: true)%>% of these issues.
-  <%else%>
+  You own
+  <%=number_with_precision(@percentage_owned, :precision => 2, strip_insignificant_zeros: true)%>% of these issues.
+<%else%>
   You own 0% of these issues.
 <%end%>
 
+
+
 <div class="container">
-  <div class="row">
-    <%@comics.each do |comic| %>
-      <div class="col-xs-3">
-        <div class="thumb-nail">
-          <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume, :id => comic.id}) %></div>
-          <div>Vol.<%=comic.volume%> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
+    <div class="row">
+        <%@comics.each do |comic| %>
+        <div class="col-xs-3">
+            <div class="thumb-nail">
+                <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
+                <div>Vol.<%=comic.volume%>
+                    #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
                 <!-- , :class => "img-responsive" -->
+            </div>
         </div>
-      </div>
-    <%end%>
-  </div>
+        <%end%>
+    </div>
 </div>
