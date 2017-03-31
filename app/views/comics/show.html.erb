@@ -64,7 +64,7 @@
             <p>
                 <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %>
                 |
-                <%= link_to 'Edit', edit_comic_path(@comic) %>
+                <%= link_to 'Edit', edit_comic_path(@comic), :class => 'edit-link' %>
                 |
                 <%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
             </p>
