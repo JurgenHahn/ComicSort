@@ -1,33 +1,33 @@
-
-
 .thumb-nail {
-
-    display: block;
-    padding: 4px;
-    margin-bottom: 25px;
-    line-height: 1.428571429;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    text-align: center;
-}
-
-.comic-details {
-  position: fixed;
-  top: -5%;
-  left: 20%;
-  z-index: 100;
+  display: block;
+  padding: 4px;
+  margin-bottom: 25px;
+  line-height: 1.428571429;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
 }
 
 .comic-details-background {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30,30,30,0.8);
-    z-index: 100;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.8);
+  z-index: 100;
+}
+
+.comic-details {
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  margin: auto;
 }

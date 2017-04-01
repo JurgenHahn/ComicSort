@@ -46,19 +46,17 @@ $(document).ready(function() {
     });
   });
 
-//prevents the default of the the back link trigger the event handler on the page
-  $('.comic-details').on('click', '.back-link', function(event){
-    event.preventDefault();
-  });
-
 //on click returns user to the index
   $('.comic-details-background').on('click', function(event) {
     $('.comic-details').fadeOut(400);
     $('.comic-details-background').fadeOut(400);
   });
 
-  // $('.comic-details').on('click', '.edit-link', function(event){
-  //   event.stopPropagation();
-  // });
+//allows the user to interact with the modal window
+  $('.comic-details').on('click', '.comic-wrapper', function(event){
+    event.stopPropagation();
+  });
+
+
 
 });
