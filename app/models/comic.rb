@@ -1,4 +1,7 @@
 class Comic < ApplicationRecord
+  validates :volume, format: { with: /[1 - 4]/,
+    message: "must from 1..4"}
+
 
   def self.list_comics
     Comic.all.order(:volume).order(:issue)

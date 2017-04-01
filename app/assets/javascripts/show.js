@@ -52,6 +52,12 @@ $(document).ready(function() {
     $('.comic-details-background').fadeOut(400);
   });
 
+  $('.comic-details').on('click', '.back-link', function(event) {
+    event.preventDefault();
+    $('.comic-details').fadeOut(400);
+    $('.comic-details-background').fadeOut(400);
+  });
+
 //allows the user to interact with the modal window
   $('.comic-details').on('click', '.comic-wrapper', function(event){
     event.stopPropagation();

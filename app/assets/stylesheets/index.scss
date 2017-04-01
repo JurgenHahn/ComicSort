@@ -1,5 +1,5 @@
 .thumb-nail {
-  display: block;
+  display: none;
   padding: 4px;
   margin-bottom: 25px;
   line-height: 1.428571429;
@@ -9,6 +9,10 @@
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   text-align: center;
+}
+
+.unowned {
+  opacity: 0.5;
 }
 
 .comic-details-background {
