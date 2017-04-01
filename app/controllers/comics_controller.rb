@@ -39,7 +39,6 @@ class ComicsController < ApplicationController
   # POST /comics.json
   def create
     @comic = Comic.new(comic_params)
-
     respond_to do |format|
       if @comic.save
         format.html { redirect_to comics_path({volume: @comic.volume}), notice: 'Comic was successfully created.' }
@@ -57,7 +56,7 @@ class ComicsController < ApplicationController
   def update
     respond_to do |format|
       if @comic.update(comic_params)
-        format.html { redirect_to @comic, notice: 'Comic was successfully updated.' }
+        format.html { redirect_to comic_path({issue: @comic.issue, volume: @comic.volume}), notice: 'Comic was successfully updated.' }
         format.json { render :show, status: :ok, location: @comic }
       else
         format.html { render :edit }
@@ -85,6 +84,6 @@ class ComicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
-      params.require(:comic).permit(:id, :title, :tags, :volume_link, :volume, :cover_artist, :letterer, :issue, :price, :cover, :owned, :writer, :penciler, :inker, :colorist, :editor, :editor_in_chief)
+      params.require(:comic).permit(:id, :title, :tags, :cover_price, :volume, :issue, :price, :cover, :owned, :cover_artist, :writers, :pencilers, :inkers, :colourists, :letterers, :editors, :editor_in_chief)
     end
 end

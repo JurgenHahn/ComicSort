@@ -16,7 +16,7 @@
         <td><%= comic.volume %></td>
         <td><%= number_with_precision(comic.issue, strip_insignificant_zeros: true)%></td>
         <td>$<%= comic.price %></td>
-        <td><%= link_to 'Show', comic, :class => "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Show', comic_path(comic, {:issue => comic.issue, :volume => comic.volume}), :class => "btn btn-default btn-xs" %></td>
     <% end %>
   </tbody>
 </table>
