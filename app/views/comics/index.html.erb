@@ -28,27 +28,19 @@ of these issues.
 <div class="container">
     <div class="row">
         <%@comics.each do |comic| %>
-        <!-- displays thumb-nail as transparent if owned == false -->
-        <%if comic.owned == false%>
           <div class="col-xs-3">
-              <div class="thumb-nail unowned">
-                  <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
-                  <div>Vol.<%=comic.volume%>
-                      #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
-                  <!-- , :class => "img-responsive" -->
-              </div>
-          </div>
-        <%else%>
-        <!-- dsplays thumb-nail as normal if owned == true -->
-          <div class="col-xs-3">
+            <%if comic.owned == true%>
+            <!-- displays thumb-nail normally if owned == true -->
               <div class="thumb-nail">
-                  <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
-                  <div>Vol.<%=comic.volume%>
-                      #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
-                  <!-- , :class => "img-responsive" -->
+            <%else%>
+            <!-- displays thumb-nail as transparent if owned == false -->
+              <div class="thumb-nail unowned">
+            <%end%>
+                <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
+                <div>Vol.<%=comic.volume%> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
+                <!-- , :class => "img-responsive" -->
               </div>
           </div>
-        <%end%>
         <%end%>
     </div>
 </div>

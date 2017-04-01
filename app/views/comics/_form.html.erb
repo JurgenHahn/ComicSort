@@ -28,14 +28,21 @@
   <div class="field form-group">
     <%= f.label :issue, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :issue %>
+      <%= f.number_field :issue %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :cover_price, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.number_field :cover_price %>
     </div>
   </div>
 
   <div class="field form-group">
     <%= f.label :price, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :price %>
+      <%= f.number_field :price %>
     </div>
   </div>
 
@@ -47,51 +54,51 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :cover_artist, class: 'col-sm-2 control-label' %>
+    <%= f.label :cover_artists, "Cover Artists", class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :cover_artist %>
+      <%= f.text_field :cover_artists %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :writer, class: 'col-sm-2 control-label' %>
+    <%= f.label :writers, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :writer %>
+      <%= f.text_field :writers %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :penciler, class: 'col-sm-2 control-label' %>
+    <%= f.label :pencilers, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :penciler %>
+      <%= f.text_field :pencilers %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :inker, class: 'col-sm-2 control-label' %>
+    <%= f.label :inkers, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :inker %>
+      <%= f.text_field :inkers %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :colorist, class: 'col-sm-2 control-label' %>
+    <%= f.label :colourists, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :colorist %>
+      <%= f.text_field :colourists %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :letterer, class: 'col-sm-2 control-label' %>
+    <%= f.label :letterers, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :letterer %>
+      <%= f.text_field :letterers %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :editor, class: 'col-sm-2 control-label' %>
+    <%= f.label :editors, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :editor %>
+      <%= f.text_field :editors %>
     </div>
   </div>
 
