@@ -25,13 +25,10 @@ class ComicsController < ApplicationController
     end
   end
 
-
-  # GET /comics/new
   def new
     @comic = Comic.new
   end
 
-  # GET /comics/1/edit
   def edit
   end
 

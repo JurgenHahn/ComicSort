@@ -1,5 +1,6 @@
 .thumb-nail {
   display: none;
+  // display: block;
   padding: 4px;
   margin-bottom: 25px;
   line-height: 1.428571429;
@@ -26,12 +27,21 @@
   z-index: 100;
 }
 
-.comic-details {
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  margin: auto;
+// .comic-details {
+//   position: fixed;
+//   margin: auto;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 100;
+// }
+
+#volume-title {
+  text-align: center;
+}
+
+.stats {
+  text-align: center;
+  margin-bottom: 20px;
 }

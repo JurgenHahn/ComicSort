@@ -1,46 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<!-- Notice to user if search returns no results -->
+<% if @comics.blank? %>
+  <h4>There are no comics containing the term <%= params[:search] %>.</h4>
+<% end %>
+
+<h1 id="volume-title">The Amazing Spider-Man Volume <%= params["volume"] %></h1>
+
+<%= render 'stats' %>
+
 <!--invisible div used with an ajax request to create a show modal -->
 <div class="comic-details-background">
   <div class="comic-details"></div>
 </div>
 
-
-<% if @comics.blank? %>
-  <h4>There are no comics containing the term
-    <%= params[:search] %>.</h4>
-<% end %>
-
-<h1 #comic-title>The Amazing Spider-Man Vol.<%=params["volume"]%></h1>
-You own
-<%=@comics.where(owned: true).count%>
-/
-<%=@comics.count%>
-of these issues.
-
-<% if @comics.count > 0 %>
-  You own
-  <%=number_with_precision(@percentage_owned, :precision => 2, strip_insignificant_zeros: true)%>% of these issues.
-<%else%>
-  You own 0% of these issues.
-<%end%>
-
 <div class="container">
     <div class="row">
-        <%@comics.each do |comic| %>
-          <div class="col-xs-3">
-            <%if comic.owned == true%>
-            <!-- displays thumb-nail normally if owned == true -->
-              <div class="thumb-nail">
-            <%else%>
-            <!-- displays thumb-nail as transparent if owned == false -->
-              <div class="thumb-nail unowned">
-            <%end%>
-                <div><%=link_to image_tag("#{comic.cover}", size: "232x352"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
-                <div>Vol.<%=comic.volume%> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
-                <!-- , :class => "img-responsive" -->
-              </div>
+      <% @comics.each do |comic| %>
+        <div class="col-xs-3">
+          <!-- displays transparent thumb-nail if owned == false -->
+          <div class="thumb-nail <% if comic.owned == false %> unowned"> <% else %> "> <% end %>
+            <div><%= link_to image_tag("#{comic.cover}", size: "232x352", :class => "img-responsive"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
+            <div>Vol.<%= comic.volume %> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
+
           </div>
-        <%end%>
+        </div>
+      <% end %>
     </div>
 </div>

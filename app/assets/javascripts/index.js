@@ -8,8 +8,8 @@ $(document).ready(function() {
 
   $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-     $('.thumb-nail').slice(dozen, dozen + 12).show();
-     dozen = dozen + 12;
+    //  $('.thumb-nail').slice(dozen, dozen + 12).show();
+    //  dozen = dozen + 12;
      }
   });
 
