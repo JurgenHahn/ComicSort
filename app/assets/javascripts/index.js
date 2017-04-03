@@ -3,7 +3,7 @@ $(document).ready(function() {
   var dozen = 12;
 
   $(function(){
-    $('.thumb-nail').slice(0, dozen).show();
+    // $('.thumb-nail').slice(0, dozen).show();
   });
 
   $(window).scroll(function() {
