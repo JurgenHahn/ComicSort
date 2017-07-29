@@ -3,13 +3,34 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.json
   def index
-      if params[:search]
-        @comics = Comic.search(params[:search]).list_comics
-      else
-        @comics = Comic.where(volume: params["volume"]).list_comics
-        @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
+    @comics_1 = Comic.where(volume: params["volume"]).list_comics.limit(1)
+
+    if request.xhr?
+      respond_to do |format|
+        format.JSON {
+        render JSON: @comics_1[0]
+        }
       end
+    end
+
+    if params[:search]
+      @comics = Comic.search(params[:search]).list_comics
+    elsif params[:annual]
+      @comics = Comic.all.where(annual: true)
+      @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
+    else
+      @comics = Comic.where(annual: false).where(volume: params["volume"]).list_comics
+      @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
+    end
+
+    # if request.xhr?
+    #   @comics = Comic.where(volume: params["volume"]).list_comics.limit(1)
+    #   render json: @comics
+    # end
+
   end
+
+
 
   def need_list
     @comics = Comic.list_comics.where(owned: false)
@@ -81,6 +102,6 @@ class ComicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
-      params.require(:comic).permit(:id, :title, :tags, :cover_price, :volume, :issue, :price, :cover, :owned, :cover_artist, :writers, :pencilers, :inkers, :colourists, :letterers, :editors, :editor_in_chief)
+      params.require(:comic).permit(:id, :title, :tags, :cover_price, :volume, :issue, :price, :cover, :owned, :annual, :cover_artists, :writers, :pencilers, :inkers, :colourists, :letterers, :editors, :editor_in_chief)
     end
 end

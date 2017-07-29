@@ -1,6 +1,6 @@
 class Comic < ApplicationRecord
-  validates :volume, format: { with: /[1-4]/,
-    message: "must from 1..4"}
+  validates :volume, format: { with: /[1-5]/,
+    message: "must from 1..5"}
 
 
   def self.list_comics

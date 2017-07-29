@@ -1,0 +1,38 @@
+$(document).ready(function() {
+
+  $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() == $(document).height()) {
+      var volumeParam = $('#volume-variable').data('volume');
+
+      $.ajax({
+        url: '/comics',
+        method: 'GET',
+        data: {volume: volumeParam}
+      }).done(function(data) {
+        console.log(data);
+        // $('.container').append(data);
+        // var json = data;
+        // comic = JSON.parse(json);
+
+        // var issue = data.issue;
+        // console.log(issue);
+        // var volume = comic.volume;
+
+
+
+
+        // var div1 = '<div class="thumbnail">';
+        // var div2 = '<div><a href="/comics68?issue=1.0&volume=4"><img class="img-responsive" src="/assets/vol4-001-69a662919fdf468c3cdd059686c33239701990981cb1d9a65303c371682455e9.jpg" alt="Vol'+ volume + '00'+ issue +'"></a></div>'
+        // var div3 = '<div> Vol.' + volume + ' #' + issue + '</div>';
+        //
+        // $('.container').append(div1);
+        // $('.thumbnail').append(div2);
+        // $('.thumbnail').append(div3);
+
+
+
+      });
+    }
+  });
+
+});

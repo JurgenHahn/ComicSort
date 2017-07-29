@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401184341) do
+ActiveRecord::Schema.define(version: 20170729200444) do
 
   create_table "comics", force: :cascade do |t|
     t.string   "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170401184341) do
     t.string   "letterers"
     t.text     "tags"
     t.float    "cover_price"
+    t.boolean  "annual"
   end
 
 end

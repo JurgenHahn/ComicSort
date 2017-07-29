@@ -9,22 +9,8 @@
 
 <%= render 'stats' %>
 
-<!--invisible div used with an ajax request to create a show modal -->
-<div class="comic-details-background">
-  <div class="comic-details"></div>
-</div>
+<%= render 'comics' %>
 
-<div class="container">
-    <div class="row">
-      <% @comics.each do |comic| %>
-        <div class="col-xs-3">
-          <!-- displays transparent thumb-nail if owned == false -->
-          <div class="thumb-nail <% if comic.owned == false %> unowned"> <% else %> "> <% end %>
-            <div><%= link_to image_tag("#{comic.cover}", size: "232x352", :class => "img-responsive"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
-            <div>Vol.<%= comic.volume %> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
-
-          </div>
-        </div>
-      <% end %>
-    </div>
-</div>
+<!-- passes the current volume to index.js to use as a param in ajax calls -->
+<%= content_tag :div, id: "volume-variable", data: {volume: params["volume"]} do %>
+<%end%>
