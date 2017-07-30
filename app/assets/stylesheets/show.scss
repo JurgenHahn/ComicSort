@@ -11,7 +11,7 @@
   max-height: 80%;
   height:auto;
 }
-.details-title {
+.comic-details-title {
   font-size: 18px;
 }
 
@@ -31,4 +31,30 @@
   width: 45%;
   padding-left: 2%;
   float: left;
+}
+
+@media (max-width: 900px) {
+  .comic-details-credits p{
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  .comic-details-credits .comic-details-title{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 760px) {
+  .comic-details-credits p{
+    font-size: 10px;
+    margin-bottom: 0px;
+  }
+  .comic-details-credits .comic-details-title{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .comic-details-credits p{
+    line-height: 1.3;
+  }
 }
