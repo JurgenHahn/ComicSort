@@ -55,6 +55,21 @@
 
 @media (max-width: 600px) {
   .comic-details-credits p{
-    line-height: 1.3;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 520px) {
+  .comic-details{
+    width: 90%;
+  }
+}
+
+@media (max-wdith: 430px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 10px;
+  }
+  .comic-details-credits p{
+    font-size: 8px;
   }
 }
