@@ -5,7 +5,7 @@
 }
 
 .comic-details {
-  width: 70%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
   max-height: 80%;
@@ -32,44 +32,108 @@
   padding-left: 2%;
   float: left;
 }
+.comic-details-credits p{
+  line-height: 14px;
+}
+
+@media (max-width: 1035px){
+  .comic-details-credits p{
+    font-size: 13px;
+    line-height: 12.5px;
+  }
+}
 
 @media (max-width: 900px) {
-  .comic-details-credits p{
-    font-size: 12px;
-    margin-bottom: 2px;
+  .comic-details-credits .comic-details-title{
+    font-size: 16px;
   }
+
+  .comic-details-credits p{
+    font-size: 11px;
+    line-height: 11px;
+  }
+}
+
+@media (max-width: 850px) {
   .comic-details-credits .comic-details-title{
     font-size: 14px;
+  }
+  .comic-details-credits p{
+    font-size: 10px;
+    line-height: 9px;
   }
 }
 
 @media (max-width: 760px) {
-  .comic-details-credits p{
-    font-size: 10px;
-    margin-bottom: 0px;
+  .comic-details-credits .comic-details-title{
+    font-size: 13px;
   }
+  .comic-details-credits p{
+    font-size: 9px;
+    line-height: 9px;
+    margin-bottom: 7px;
+  }
+}
+
+@media (max-width: 675px) {
   .comic-details-credits .comic-details-title{
     font-size: 12px;
   }
-}
-
-@media (max-width: 600px) {
   .comic-details-credits p{
-    line-height: 1.4;
+    font-size: 9px;
+    line-height: 9px;
+    margin-bottom: 5px;
   }
 }
 
-@media (max-width: 520px) {
-  .comic-details{
-    width: 90%;
+@media (max-width: 620px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 11px;
+  }
+  .comic-details-credits p{
+    font-size: 7px;
+    line-height: 7px;
+    margin-bottom: 5px;
   }
 }
 
-@media (max-wdith: 430px) {
+@media (max-width: 565px) {
   .comic-details-credits .comic-details-title{
     font-size: 10px;
   }
   .comic-details-credits p{
-    font-size: 8px;
+    font-size: 6px;
+    line-height: 6px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 515px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 9px;
+  }
+  .comic-details-credits p{
+    font-size: 6px;
+    line-height: 6px;
+    margin-bottom: 4px;
+  }
+
+  .issue {
+    margin-top: -4px;
+  }
+}
+
+@media (max-width: 475px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 7.5px;
+  }
+  .comic-details-credits p{
+    font-size: 5px;
+    line-height: 5px;
+    margin-bottom: 4px;
+  }
+
+  .issue {
+    margin-top: -8px;
   }
 }
