@@ -2,18 +2,138 @@
   background-color: lightgrey;
   padding: 30px;
   border-radius: 5px;
-  font-size: 28px;
-  margin-top: 60px;
-  max-width: 750px;
 }
 
-.cover {
-  max-width: 292px;
-  margin: 0 auto;
-  padding: 10px;
-  margin: 0 20px;
+.comic-details {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 80%;
+  height:auto;
+}
+.comic-details-title {
+  font-size: 18px;
 }
 
-.credits {
-  margin-left: 20px;
+.comic-details-cover {
+  width: 45%;
+  margin-left: 1%;
+  margin-right: 1%;
+  float: left;
+}
+
+.comic-details-cover-art {
+  width: 100%;
+  height: auto;
+}
+
+.comic-details-credits {
+  width: 45%;
+  padding-left: 2%;
+  float: left;
+}
+.comic-details-credits p{
+  line-height: 14px;
+}
+
+@media (max-width: 1035px){
+  .comic-details-credits p{
+    font-size: 13px;
+    line-height: 12.5px;
+  }
+}
+
+@media (max-width: 900px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 16px;
+  }
+
+  .comic-details-credits p{
+    font-size: 11px;
+    line-height: 11px;
+  }
+}
+
+@media (max-width: 850px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 14px;
+  }
+  .comic-details-credits p{
+    font-size: 10px;
+    line-height: 9px;
+  }
+}
+
+@media (max-width: 760px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 13px;
+  }
+  .comic-details-credits p{
+    font-size: 9px;
+    line-height: 9px;
+    margin-bottom: 7px;
+  }
+}
+
+@media (max-width: 675px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 12px;
+  }
+  .comic-details-credits p{
+    font-size: 9px;
+    line-height: 9px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 620px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 11px;
+  }
+  .comic-details-credits p{
+    font-size: 7px;
+    line-height: 7px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 565px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 10px;
+  }
+  .comic-details-credits p{
+    font-size: 6px;
+    line-height: 6px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 515px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 9px;
+  }
+  .comic-details-credits p{
+    font-size: 6px;
+    line-height: 6px;
+    margin-bottom: 4px;
+  }
+
+  .issue {
+    margin-top: -4px;
+  }
+}
+
+@media (max-width: 475px) {
+  .comic-details-credits .comic-details-title{
+    font-size: 7.5px;
+  }
+  .comic-details-credits p{
+    font-size: 5px;
+    line-height: 5px;
+    margin-bottom: 4px;
+  }
+
+  .issue {
+    margin-top: -8px;
+  }
 }
