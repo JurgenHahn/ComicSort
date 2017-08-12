@@ -10,25 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729200444) do
+ActiveRecord::Schema.define(version: 20170812210956) do
 
   create_table "comics", force: :cascade do |t|
-    t.string   "title"
     t.integer  "volume"
     t.float    "issue"
-    t.string   "writers"
-    t.string   "pencilers"
-    t.string   "inkers"
-    t.string   "colourists"
-    t.string   "editors"
-    t.string   "editor_in_chief"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "cover"
     t.boolean  "owned"
     t.integer  "price"
     t.string   "cover_artists"
-    t.string   "letterers"
     t.text     "tags"
     t.float    "cover_price"
     t.boolean  "annual"
