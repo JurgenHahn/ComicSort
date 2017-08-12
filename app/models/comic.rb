@@ -1,7 +1,9 @@
 class Comic < ApplicationRecord
+
+  has_many :stories, dependent: :destroy
+
   validates :volume, format: { with: /[1-5]/,
     message: "must from 1..5"}
-
 
   def self.list_comics
     Comic.all.order(:volume).order(:issue)
