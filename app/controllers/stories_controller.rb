@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_comic, only: [:new, :create, :edit, :show, :update]
   # GET /stories
   # GET /stories.json
   def index
@@ -14,7 +14,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/new
   def new
-    @story = Story.new
+    @story = @comic.stories.new
   end
 
   # GET /stories/1/edit
@@ -24,11 +24,11 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(story_params)
+    @story = @comic.stories.new(story_params)
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.html { redirect_to @comic, notice: 'Story was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
+        format.html { redirect_to comic_story_path([@comic, @story]), notice: 'Story was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit }
@@ -62,6 +62,9 @@ class StoriesController < ApplicationController
   end
 
   private
+    def set_comic
+      @comic = Comic.find(params[:comic_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])

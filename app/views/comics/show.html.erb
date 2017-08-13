@@ -20,11 +20,21 @@
                 <strong>Cover Artists:</strong>
                 <%= @comic.cover_artists %>
             </p>
+
+            <p>
+              <% @comic.stories.each do |story| %>
+              <strong>Stories:</strong>
+                <%= link_to 'story.title', comic_story_path({:comic_id => @comic.id, :id => story.id}) %>
+              <% end %>
+            </p>
+
             <p>
                 <strong>Tags:</strong>
                 <%= @comic.tags %>
             </p>
-
+            <p>
+              <%= link_to 'New Story', new_comic_story_path(@comic, @story) %>
+            </p>
             <p>
                 <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %>
                 |
