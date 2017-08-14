@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812215357) do
+ActiveRecord::Schema.define(version: 20170814154958) do
 
   create_table "comics", force: :cascade do |t|
     t.integer  "volume"
     t.float    "issue"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "cover"
     t.boolean  "owned"
     t.integer  "price"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170812215357) do
     t.text     "tags"
     t.float    "cover_price"
     t.boolean  "annual"
+    t.string   "editor_in_chief"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -34,9 +35,8 @@ ActiveRecord::Schema.define(version: 20170812215357) do
     t.string   "colourists"
     t.string   "letterers"
     t.string   "editors"
-    t.string   "editor_in_chief"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "comic_id"
   end
 

@@ -114,15 +114,7 @@ class ComicsController < ApplicationController
                                     :owned,
                                     :annual,
                                     :cover_artists,
-                                    stories_attributes: [ :id,
-                                                          :title,
-                                                          :writers,
-                                                          :pencilers,
-                                                          :inkers,
-                                                          :colourists,
-                                                          :letterers,
-                                                          :editors,
-                                                          :editor_in_chief,
-                                                          :_destroy])
+                                    :editor_in_chief)
+
     end
 end

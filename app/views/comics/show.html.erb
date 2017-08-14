@@ -17,14 +17,24 @@
             </div>
 
             <p>
+                <strong>Cover Price:</strong>
+                <%= @comic.cover_price %>
+            </p>
+
+            <p>
                 <strong>Cover Artists:</strong>
                 <%= @comic.cover_artists %>
             </p>
 
             <p>
+                <strong>Editor-in-Chief:</strong>
+                <%= @comic.editor_in_chief %>
+            </p>
+
+            <p>
               <% @comic.stories.each do |story| %>
-              <strong>Stories:</strong>
-                <%= link_to 'story.title', comic_story_path({:comic_id => @comic.id, :id => story.id}) %>
+              <!-- <strong>Stories:</strong> -->
+                <%= link_to story.title, comic_story_path({:comic_id => @comic.id, :id => story.id}) %>
               <% end %>
             </p>
 
@@ -33,9 +43,8 @@
                 <%= @comic.tags %>
             </p>
             <p>
-              <%= link_to 'New Story', new_comic_story_path(@comic, @story) %>
-            </p>
-            <p>
+                <%= link_to 'Add Story', new_comic_story_path(@comic, @story) %>
+                |
                 <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %>
                 |
                 <%= link_to 'Edit', edit_comic_path(@comic), :class => 'edit-link' %>
