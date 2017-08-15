@@ -2,53 +2,18 @@
 
 <div class="comic-wrapper">
     <div class="row">
+
         <div class="comic-details-cover">
             <%= image_tag "#{@comic.cover}", :class => 'comic-details-cover-art' %>
         </div>
 
         <div class="comic-details-credits">
-          <!-- investigate removing issue div -->
-          <!-- investigate removing strong tags -->
-            <div class="issue">
-                <strong class="comic-details-title">The Amazing Spider-Man</strong>
-                <p>Volume <%= @comic.volume %> Issue <%= number_with_precision(@comic.issue, strip_insignificant_zeros: true) %></p>
+            <%= render 'issue' %>
+            <div class = "work-area">
+                <%= render 'details' %>
+                <%= render 'links' %>
             </div>
-
-            <p><strong>Cover Price: </strong> <%= @comic.cover_price %></p>
-
-            <p><strong>Cover Artists: </strong><%= @comic.cover_artists %></p>
-
-            <p><strong>Editor-in-Chief: </strong><%= @comic.editor_in_chief %></p>
-<!-- investigate using 1 line do block -->
-            <p><strong>Stories: </strong>
-              <% @comic.stories.each do |story| %>
-                  <%= link_to story.title, comic_story_path({:comic_id => @comic.id, :id => story.id}) %>
-            <% end %></p>
-
-            <p><strong>Tags: </strong><%= @comic.tags %></p>
-            <p>
-                <%= link_to 'Add Story', new_comic_story_path(@comic, @story) %>
-                |
-                <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %>
-                |
-                <%= link_to 'Edit', edit_comic_path(@comic), :class => 'edit-link' %>
-                |
-                <%= link_to 'Delete', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
-            </p>
-<!-- investigate using 1 line unless statments -->
-            <p>
-                <%unless @previous_comic.nil? %>
-                  <%= link_to 'Previous Issue', comic_path(:id => @previous_comic.id, :volume =>@previous_comic.volume, :issue => @previous_comic.issue), :class =>"previous-link" %>
-                <%else%>
-                  Previous Issue
-                <%end%>
-                  |
-                <%unless @next_comic.nil? %>
-                  <%= link_to 'Next Issue', comic_path(:id => @next_comic.id, :volume =>@next_comic.volume, :issue => @next_comic.issue), :class =>"next-link" %>
-                <%else%>
-                  Next Issue
-                <%end%>
-            </p>
         </div>
+
     </div>
 </div>
