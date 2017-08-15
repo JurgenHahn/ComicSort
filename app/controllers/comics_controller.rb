@@ -38,6 +38,7 @@ class ComicsController < ApplicationController
   # GET /comics/1
   # GET /comics/1.json
   def show
+      @stories = @comic.stories
       @previous_comic = (Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).order('volume DESC').order('issue DESC').limit(1))[0]
       @next_comic = (Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).order('volume').order('issue').limit(1))[0]
 
@@ -102,6 +103,18 @@ class ComicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
-      params.require(:comic).permit(:id, :title, :tags, :cover_price, :volume, :issue, :price, :cover, :owned, :annual, :cover_artists)
+      params.require(:comic).permit(:id,
+                                    :title,
+                                    :tags,
+                                    :cover_price,
+                                    :volume,
+                                    :issue,
+                                    :price,
+                                    :cover,
+                                    :owned,
+                                    :annual,
+                                    :cover_artists,
+                                    :editor_in_chief)
+
     end
 end

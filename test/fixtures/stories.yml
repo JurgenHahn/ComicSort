@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  writers: MyString
+  pencilers: MyString
+  inkers: MyString
+  colourists: MyString
+  letterers: MyString
+  editors: MyString
+  editor_in_chief: MyString
+
+two:
+  title: MyString
+  writers: MyString
+  pencilers: MyString
+  inkers: MyString
+  colourists: MyString
+  letterers: MyString
+  editors: MyString
+  editor_in_chief: MyString

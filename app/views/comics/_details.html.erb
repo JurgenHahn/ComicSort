@@ -1,0 +1,14 @@
+<!-- investigate removing issue div -->
+<!-- investigate removing strong tags -->
+  <p><strong>Cover Price: </strong> <%= @comic.cover_price %></p>
+
+  <p><strong>Cover Artists: </strong><%= @comic.cover_artists %></p>
+
+  <p><strong>Editor-in-Chief: </strong><%= @comic.editor_in_chief %></p>
+<!-- investigate using 1 line do block -->
+  <p><strong>Stories: </strong>
+    <% @comic.stories.each do |story| %>
+        <%= link_to story.title, comic_story_path({:comic_id => @comic.id, :id => story.id}), :class => 'story-link' %>
+  <% end %></p>
+
+  <p><strong>Tags: </strong><%= @comic.tags %></p>

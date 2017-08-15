@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<% @stories.each do |story| %>
+  <p> Title: <%= story.title %> </p>
+  <p> Writers: <%= story.writers %> </p>
+  <p> Pencilers: <%= story.pencilers %> </p>
+  <p> Inkers: <%= story.inkers %> </p>
+  <p> Colourists: <%= story.colourists %> </p>
+  <p> Letterers: <%= story.letterers %> </p>
+  <p> Editors: <%= story.editors %> </p>
+<%end%>
+
+<%= link_to 'Edit', edit_comic_story_path({:id => @story.id}) %> |
+<%= link_to 'Back', comic_path(@comic) %>

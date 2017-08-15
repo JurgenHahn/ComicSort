@@ -8,46 +8,12 @@
         </div>
 
         <div class="comic-details-credits">
-            <div class="issue">
-                <strong class="comic-details-title">The Amazing Spider-Man</strong>
-                <p>Volume
-                    <%= @comic.volume %>
-                    Issue
-                    <%= number_with_precision(@comic.issue, strip_insignificant_zeros: true) %></p>
+            <%= render 'issue' %>
+            <div class = "work-area">
+                <%= render 'details' %>
+                <%= render 'links' %>
             </div>
-
-            <p>
-                <strong>Cover Artists:</strong>
-                <%= @comic.cover_artists %>
-            </p>
-            <p>
-                <strong>Tags:</strong>
-                <%= @comic.tags %>
-            </p>
-
-            <p>
-                <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %>
-                |
-                <%= link_to 'Edit', edit_comic_path(@comic), :class => 'edit-link' %>
-                |
-                <%= link_to 'Destroy', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
-            </p>
-
-            <p>
-                <p><%unless @previous_comic.nil? %>
-                  <%= link_to 'Previous Issue', comic_path(:id => @previous_comic.id, :volume =>@previous_comic.volume, :issue => @previous_comic.issue), :class =>"previous-link" %>
-                <%else%>
-                  Previous Issue
-                <%end%>
-                  |
-                <%unless @next_comic.nil? %>
-                  <%= link_to 'Next Issue', comic_path(:id => @next_comic.id, :volume =>@next_comic.volume, :issue => @next_comic.issue), :class =>"next-link" %>
-                <%else%>
-                  Next Issue
-                  </p>
-                <%end%>
-            </p>
-
         </div>
+
     </div>
 </div>
