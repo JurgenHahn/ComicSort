@@ -11,4 +11,4 @@
 <%end%>
 
 <%= link_to 'Edit', edit_comic_story_path({:id => @story.id}) %> |
-<%= link_to 'Back', comic_path(@comic) %>
+<%= link_to 'Back', comic_path(@comic), :id => 'back-to-comic' %>
