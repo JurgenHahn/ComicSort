@@ -1,91 +1,68 @@
+<div class="comic-edit-form">
 <%= form_for(comic)  do |f| %>
-  <% if comic.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
+    <% if comic.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
 
-      <ul>
-      <% comic.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field form-group">
-    <%= f.label :volume, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.number_field :volume %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :issue, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.number_field :issue %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :cover_price, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.number_field :cover_price, :step => 0.01 %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :price, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.number_field :price %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :cover, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :cover %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :cover_artists, "Cover Artists", class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :cover_artists %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :editor_in_chief, "Editor-in-Chief", class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :editor_in_chief %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :tags, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :tags %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :annual, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <div class="checkbox">
-        <%= f.check_box :annual %>
+        <ul>
+        <% comic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
       </div>
+    <% end %>
+    <div class="field form-group">
+      <%= f.label :volume, class: 'control-label' %>
+      <%= f.number_field :volume, class: 'input-field'  %>
     </div>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :owned, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <div class="checkbox">
-        <%= f.check_box :owned %>
-      </div>
+    <div class="field form-group">
+      <%= f.label :issue, class: 'control-label' %>
+      <%= f.number_field :issue, class: 'input-field'  %>
     </div>
-  </div>
 
-  <div class="field form-group">
-    <%= f.submit %>
-  </div>
+    <div class="field form-group">
+      <%= f.label :cover_price, "Cover Price", class: 'control-label' %>
+      <%= f.number_field :cover_price, :step => 0.01, class: 'input-field'  %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :price, class: 'control-label' %>
+      <%= f.number_field :price, class: 'input-field' %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :cover, class: 'control-label' %>
+      <%= f.text_field :cover, class: 'input-field'  %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :cover_artists, "Artists", class: 'control-label' %>
+      <%= f.text_field :cover_artists, class: 'input-field'  %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :editor_in_chief, "Editor-in-Chief", class: 'control-label' %>
+      <%= f.text_field :editor_in_chief, class: 'input-field'  %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :tags, class: 'control-label' %>
+      <%= f.text_field :tags, class: 'input-field'  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :annual, class: 'control-label' %>
+      <%= f.check_box :annual %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :owned, class: 'control-label' %>
+      <%= f.check_box :owned %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.submit %>
+    </div>
 <% end %>
+</div>

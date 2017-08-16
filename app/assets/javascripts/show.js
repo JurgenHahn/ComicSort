@@ -46,6 +46,22 @@ $(document).ready(function() {
     });
   });
 
+  // replaces the comic details with the comic edit form
+    $('.comic-details').one('click', '.edit-link', function(event){
+      event.stopPropagation();
+      event.preventDefault();
+      var editLink = $('a.edit-link').attr('href');
+
+      $.ajax({
+        url: editLink,
+        method: 'GET'
+      }).done(function(data){
+        // var form = $('#edit_comic_187', data);
+        $('.display-info').html(data);
+        $('.display-info > .navbar').css('display', 'none');
+      });
+    });
+
 // replaces the comic details with the story details in the js modal
   $('.comic-details').one('click', '.story-link', function(event){
     event.stopPropagation();
