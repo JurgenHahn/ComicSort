@@ -47,7 +47,7 @@ $(document).ready(function() {
   });
 
 // replaces the comic details with the story details in the js modal
-  $('.comic-details').on('click', '.story-link', function(event){
+  $('.comic-details').one('click', '.story-link', function(event){
     event.stopPropagation();
     event.preventDefault();
     var storyLink = $('a.story-link').attr('href');
@@ -57,12 +57,12 @@ $(document).ready(function() {
       method: 'GET'
     }).done(function(data){
       $('.display-info').html(data);
-      $('.display-info .navbar').css('display', 'none');
+      $('.display-info > .navbar').css('display', 'none');
     });
   });
 
   // returns to the comic details from the story details
-  $('.comic-details').on('click', '#back-to-comic', function(event){
+  $('.comic-details').one('click', '#back-to-comic', function(event){
     event.stopPropagation();
     event.preventDefault();
     var backToComicLink = $('a#back-to-comic').attr('href');
