@@ -47,7 +47,7 @@ $(document).ready(function() {
   });
 
   // replaces the comic details with the comic edit form
-    $('.comic-details').one('click', '.edit-link', function(event){
+    $('.comic-details').on('click', '.edit-link', function(event){
       event.stopPropagation();
       event.preventDefault();
       var editLink = $('a.edit-link').attr('href');
@@ -56,14 +56,14 @@ $(document).ready(function() {
         url: editLink,
         method: 'GET'
       }).done(function(data){
-        // var form = $('#edit_comic_187', data);
-        $('.display-info').html(data);
-        $('.display-info > .navbar').css('display', 'none');
+        var div = $("<div>").html(data);
+        var editForm = $(".comic-edit-form", div.get(0));
+        $('.display-info').html(editForm);
       });
     });
 
 // replaces the comic details with the story details in the js modal
-  $('.comic-details').one('click', '.story-link', function(event){
+  $('.comic-details').on('click', '.story-link', function(event){
     event.stopPropagation();
     event.preventDefault();
     var storyLink = $('a.story-link').attr('href');
@@ -72,23 +72,23 @@ $(document).ready(function() {
       url: storyLink,
       method: 'GET'
     }).done(function(data){
-      $('.display-info').html(data);
-      $('.display-info > .navbar').css('display', 'none');
+      var div = $("<div>").html(data);
+      var storyData = $(".story-details", div.get(0));
+      $('.display-info').html(storyData);
     });
   });
 
-  // returns to the comic details from the story details
-  $('.comic-details').one('click', '#back-to-comic', function(event){
+  // returns to the comic details from the story details, comic-edit-form
+  $('.comic-details').on('click', '.back-to-comic', function(event){
     event.stopPropagation();
     event.preventDefault();
-    var backToComicLink = $('a#back-to-comic').attr('href');
+    var backToComicLink = $('a.back-to-comic').attr('href');
       $.ajax({
           url: backToComicLink,
           method: 'GET'
       }).done(function(data){
         $('.comic-details').html(data);
       });
-
   });
 
 //on click returns user to the index
