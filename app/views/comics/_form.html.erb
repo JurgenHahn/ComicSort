@@ -66,5 +66,5 @@
       </div>
   <% end %>
 
-  <%= link_to 'Back', comic_path(@comic), :class => "back-to-comic"%>
+  <%= link_to 'Back', comic_path(comic, {:issue => comic.issue, :volume => comic.volume}), :class => "back-to-comic"%>
 </div>

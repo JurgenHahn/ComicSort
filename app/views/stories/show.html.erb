@@ -11,5 +11,5 @@
   <%end%>
 
   <%= link_to 'Edit', edit_comic_story_path({:id => @story.id}) %> |
-  <%= link_to 'Back', comic_path(@comic), :class => 'back-to-comic' %>
+  <%= link_to 'Back', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}), :class => 'back-to-comic' %>
 </div>

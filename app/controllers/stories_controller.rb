@@ -11,6 +11,7 @@ class StoriesController < ApplicationController
   # GET /stories/1.json
   def show
     @stories = @comic.stories.all
+    @comic = Comic.find(params[:comic_id]) 
   end
 
   # GET /stories/new
