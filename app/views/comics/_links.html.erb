@@ -1,12 +1,8 @@
 <p>
-    <%= link_to 'Add Story', new_comic_story_path(@comic, @story) %>
-    |
-    <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %>
-    |
-    <%= link_to 'Edit', edit_comic_path(@comic), :class => 'edit-link' %>
-    |
-    <%= link_to 'Delete', @comic, method: :delete, data: {confirm: 'Are you sure?'} %>
-</p>
+    <%= link_to 'Add Story', new_comic_story_path(@comic, @story) %> |
+    <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %> |
+    <%= link_to 'Edit', edit_comic_path(@comic), :class => 'edit-link' %> |
+    <%= link_to 'Destroy', @comic, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <!-- investigate using 1 line unless statments -->
 <p>
     <%unless @previous_comic.nil? %>

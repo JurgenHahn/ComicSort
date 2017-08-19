@@ -83,26 +83,8 @@ $(document).ready(function() {
     event.preventDefault();
 
     var formAction = $('.edit_comic').attr('action')
-    var volume = $('#comic_volume').val();
-    var issue = $('#comic_issue').val();
-    var coverPrice = $('#comic_cover_price').val();
-    var price = $('#comic_price').val();
-    var cover = $('#comic_cover').val();
-    var coverArtists = $('#comic_cover_artists').val();
-    var editorInChief = $('#comic_editor_in_chief').val();
-    var tags = $('#comic_tags').val();
-    if ($('#comic_annual:checked').val() === 1){
-      var annual = 1;
-    } else{
-      var annual = 0
-    }
-    if ($('#comic_owned:checked').val() === 1){
-      var owned = 1;
-    } else{
-      var owned = 0
-    }
-
     var form = $('.edit_comic').serialize();
+
     $.ajax({
       url: formAction,
       method: 'PATCH',

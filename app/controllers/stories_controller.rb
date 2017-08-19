@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-  before_action :set_comic, only: [:new, :create, :edit, :show, :update]
+  before_action :set_comic, only: [:new, :create, :edit, :show, :update, :destroy]
   # GET /stories
   # GET /stories.json
   def index
@@ -10,8 +10,7 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @stories = @comic.stories.all
-    @comic = Comic.find(params[:comic_id]) 
+    @comic = Comic.find(params[:comic_id])
   end
 
   # GET /stories/new
@@ -58,7 +57,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to @comic_path, notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

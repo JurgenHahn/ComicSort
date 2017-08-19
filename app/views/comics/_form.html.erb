@@ -1,4 +1,3 @@
-<div class="comic-edit-form">
   <%= form_for(comic)  do |f| %>
       <% if comic.errors.any? %>
         <div id="error_explanation">
@@ -62,9 +61,6 @@
       </div>
 
       <div class="field form-group">
-        <%= f.submit 'Update Comic', :class => 'comic-form-btn' %>
+        <%= f.submit 'Submit', :class => 'comic-form-btn' %>
       </div>
   <% end %>
-
-  <%= link_to 'Back', comic_path(comic, {:issue => comic.issue, :volume => comic.volume}), :class => "back-to-comic"%>
-</div>

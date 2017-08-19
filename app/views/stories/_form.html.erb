@@ -1,66 +1,71 @@
-<%= form_for([@comic, @story]) do |f| %>
-  <% if story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
+s<div class = "story-form">
+  <%= form_for([@comic, @story]) do |f| %>
+    <% if story.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
 
-      <ul>
-      <% story.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% story.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= f.label :title, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :title %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :writers, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :writers %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :pencilers, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :pencilers %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :inkers, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :inkers %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :colourists, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :colourists %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :letterers, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :letterers %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :editors, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :editors %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.label :title, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :title %>
-    </div>
-  </div>
+  <%= link_to 'Back', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}), :class => "back-to-comic"%>
 
-  <div class="field form-group">
-    <%= f.label :writers, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :writers %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :pencilers, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :pencilers %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :inkers, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :inkers %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :colourists, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :colourists %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :letterers, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :letterers %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :editors, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :editors %>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
