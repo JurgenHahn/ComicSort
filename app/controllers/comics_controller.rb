@@ -76,7 +76,7 @@ class ComicsController < ApplicationController
     respond_to do |format|
       if @comic.update(comic_params)
         format.html { redirect_to comic_path({issue: @comic.issue, volume: @comic.volume}), notice: 'Comic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comic }
+        format.json { render :nothing => true }
       else
         format.html { render :edit }
         format.json { render json: @comic.errors, status: :unprocessable_entity }
@@ -104,7 +104,6 @@ class ComicsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
       params.require(:comic).permit(:id,
-                                    :title,
                                     :tags,
                                     :cover_price,
                                     :volume,

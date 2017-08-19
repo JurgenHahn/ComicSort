@@ -78,6 +78,50 @@ $(document).ready(function() {
     });
   });
 
+  $('.comic-details').on('submit', '.edit_comic', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+
+    var formAction = $('.edit_comic').attr('action')
+    var volume = $('#comic_volume').val();
+    var issue = $('#comic_issue').val();
+    var coverPrice = $('#comic_cover_price').val();
+    var price = $('#comic_price').val();
+    var cover = $('#comic_cover').val();
+    var coverArtists = $('#comic_cover_artists').val();
+    var editorInChief = $('#comic_editor_in_chief').val();
+    var tags = $('#comic_tags').val();
+    var annual = $('#comic_annual').val();
+    var owned = $('#comic_owned').val();
+
+    $.ajax({
+      url: formAction,
+      method: 'PATCH',
+      dataType: 'json',
+      data: {comic: {
+          volume: volume,
+          issue: issue,
+          cover_price: coverPrice,
+          price: price,
+          cover: cover,
+          cover_artists: coverArtists,
+          editor_in_chief: editorInChief,
+          tags: tags,
+          annual: annual,
+          owned: owned
+        }}
+      })
+      var backToComicLink = $('a.back-to-comic').attr('href');
+
+      $.ajax({
+        url: backToComicLink,
+        method: get
+      }).done(function(data){
+        $('.comic-details').html(data);
+      })
+
+    });
+
   // returns to the comic details from the story details, comic-edit-form
   $('.comic-details').on('click', '.back-to-comic', function(event){
     event.stopPropagation();
