@@ -57,7 +57,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to @comic_path, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to comic_path(@comic), notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
