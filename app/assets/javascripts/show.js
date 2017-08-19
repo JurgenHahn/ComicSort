@@ -86,6 +86,15 @@ $(document).ready(function() {
     })
   });
 
+  //destroy comic
+  // $('.comic-details').on('click', '.destroy-comic-link', function(event){
+  //   event.stopPropagation();
+  //
+  //   $('.comic-details').fadeOut(400);
+  //   $('.comic-details-background').fadeOut(400);
+  //
+  // });
+
   //show story
   $('.comic-details').on('click', '.story-link', function(event){
     event.stopPropagation();

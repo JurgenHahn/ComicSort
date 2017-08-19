@@ -1,15 +1,15 @@
-$(document).ready(function() {
-
-  $(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-      var volumeParam = $('#volume-variable').data('volume');
-
-      $.ajax({
-        url: '/comics',
-        method: 'GET',
-        data: {volume: volumeParam}
-      }).done(function(data) {
-        console.log(data);
+// $(document).ready(function() {
+//
+//   $(window).scroll(function() {
+//     if($(window).scrollTop() + $(window).height() == $(document).height()) {
+//       var volumeParam = $('#volume-variable').data('volume');
+//
+//       $.ajax({
+//         url: '/comics',
+//         method: 'GET',
+//         data: {volume: volumeParam}
+//       }).done(function(data) {
+//         console.log(data);
         // $('.container').append(data);
         // var json = data;
         // comic = JSON.parse(json);
@@ -31,8 +31,8 @@ $(document).ready(function() {
 
 
 
-      });
-    }
-  });
-
-});
+//       });
+//     }
+//   });
+//
+// });
