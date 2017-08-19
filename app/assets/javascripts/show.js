@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  //generates an ajax request on the show comic link rendering it in a hidden div
+  //show comic
   $('img').on('click', function(event) {
     event.preventDefault();
     $('.comic-details-background').fadeIn('300');
@@ -16,7 +16,7 @@ $(document).ready(function() {
     });
   });
 
-  //generates an ajax request on the next comic link
+  //next comic
   $('.comic-details').on('click', '.next-link', function(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -31,7 +31,7 @@ $(document).ready(function() {
     });
   });
 
-//generates an ajax request on the previous comic link
+  //previous comic
   $('.comic-details').on('click', '.previous-link', function(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -46,64 +46,143 @@ $(document).ready(function() {
     });
   });
 
-  // replaces the comic details with the comic edit form
-    $('.comic-details').on('click', '.edit-link', function(event){
-      event.stopPropagation();
-      event.preventDefault();
-      var editLink = $('a.edit-link').attr('href');
-
-      $.ajax({
-        url: editLink,
-        method: 'GET'
-      }).done(function(data){
-        var div = $("<div>").html(data);
-        var editForm = $(".comic-edit-form", div.get(0));
-        $('.display-info').html(editForm);
-      });
-    });
-
-// replaces the comic details with the story details in the js modal
-  $('.comic-details').on('click', '.story-link', function(event){
+  //edit comic
+  $('.comic-details').on('click', '.edit-comic-link', function(event){
     event.stopPropagation();
     event.preventDefault();
-    var storyLink = $('a.story-link').attr('href');
+    var editLink = $('a.edit-comic-link').attr('href');
 
     $.ajax({
-      url: storyLink,
+      url: editLink,
       method: 'GET'
     }).done(function(data){
       var div = $("<div>").html(data);
-      var storyData = $(".story-details", div.get(0));
-      $('.display-info').html(storyData);
+      var editForm = $(".edit-comic-form", div.get(0));
+      $('.display-info').html(editForm);
     });
   });
 
+  //update comic
   $('.comic-details').on('submit', '.edit_comic', function(event){
     event.stopPropagation();
     event.preventDefault();
 
     var formAction = $('.edit_comic').attr('action')
     var form = $('.edit_comic').serialize();
+    var backToComicLink = $('.back-to-comic').attr('href')
 
     $.ajax({
       url: formAction,
       method: 'PATCH',
       data: form,
       dataType: 'json'
+    })
 
-      })
-      var backToComicLink = $('.edit_comic').attr('action')
+    $.ajax({
+      url: backToComicLink,
+      method: 'GET'
+    }).done(function(data){
+      $('.comic-details').html(data);
+    })
+  });
 
-      $.ajax({
-        url: formAction,
-        method: 'GET'
-      }).done(function(data){
-        $('.comic-details').html(data);
-      })
+  //show story
+  $('.comic-details').on('click', '.story-link', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var storyLink = $(this).attr('href');
 
+    $.ajax({
+      url: storyLink,
+      method: 'GET'
+    }).done(function(data){
+      var div = $('<div>').html(data);
+      var storyData = $('.story-details', div.get(0));
+      $('.display-info').html(storyData);
     });
+  });
 
-  // returns to the comic details from the story details, comic-edit-form
+  //new story
+  $('.comic-details').on('click', '.add-story-link', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var addStoryLink = $('a.add-story-link').attr('href');
+
+    $.ajax({
+      url: addStoryLink,
+      method: 'GET'
+    }).done(function(data){
+      var div = $('<div>').html(data);
+      var addStoryData = $('.add-story-form', div.get(0));
+      $('.display-info').html(addStoryData);
+    })
+  });
+
+  //create story
+  $('.comic-details').on('submit', '.new_story', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+
+    var formAction = $('.new_story').attr('action');
+    var form = $('.new_story').serialize();
+    var backToComicLink = $('.back-to-comic').attr('href')
+
+    $.ajax({
+      url: formAction,
+      method: 'POST',
+      data: form,
+      dataType: 'json'
+    })
+
+    $.ajax({
+      url: backToComicLink,
+      method: 'GET'
+    }).done(function(data){
+      $('.comic-details').html(data);
+    })
+  });
+
+  //edit story
+  $('.comic-details').on('click', '.edit-story-link', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var editStoryLink = $('a.edit-story-link').attr('href');
+
+    $.ajax({
+      url: editStoryLink,
+      method: 'GET'
+    }).done(function(data){
+      var div = $('<div>').html(data);
+      var editStoryData = $('.edit-story-form', div.get(0));
+      $('.display-info').html(editStoryData);
+    })
+  });
+
+  //update story
+  $('.comic-details').on('submit', '.edit_story', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+
+    var formAction = $('.edit_story').attr('action')
+    var form = $('.edit_story').serialize();
+    var backToComicLink = $('.back-to-comic').attr('href')
+
+    $.ajax({
+      url: formAction,
+      method: 'PATCH',
+      data: form,
+      dataType: 'json'
+    })
+
+    $.ajax({
+      url: backToComicLink,
+      method: 'GET'
+    }).done(function(data){
+      $('.comic-details').html(data);
+    })
+  });
+
+  //back to show story
   $('.comic-details').on('click', '.back-to-comic', function(event){
     event.stopPropagation();
     event.preventDefault();
@@ -116,7 +195,7 @@ $(document).ready(function() {
       });
   });
 
-//on click returns user to the index
+  //on click returns user to the index
   $('.comic-details-background').on('click', function(event) {
     $('.comic-details').fadeOut(400);
     $('.comic-details-background').fadeOut(400);

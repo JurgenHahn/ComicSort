@@ -1,5 +1,7 @@
 <h1>Editing Story</h1>
-
-<%= render 'form', story: @story %>
+<div class="edit-story-form">
+  <%= render 'form', story: @story %>
+  <%= link_to 'Back', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}), :class => "back-to-comic"%>
+</div>
 
 <%= link_to 'Back', comic_story_path([@comic, @story]) %>

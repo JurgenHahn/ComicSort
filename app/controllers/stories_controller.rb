@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-  before_action :set_comic, only: [:new, :create, :edit, :show, :update, :destroy]
+  before_action :set_comic, only: [:new, :create, :edit, :show, :update, :destroy, :index]
   # GET /stories
   # GET /stories.json
   def index
@@ -30,7 +30,7 @@ class StoriesController < ApplicationController
     respond_to do |format|
       if @story.save
         format.html { redirect_to @comic, notice: 'Story was successfully created.' }
-        format.json { render :show, status: :created, location: @story }
+        format.json { render :nothing => true }
       else
         format.html { render :new }
         format.json { render json: @story.errors, status: :unprocessable_entity }
