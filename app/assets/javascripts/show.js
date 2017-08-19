@@ -91,8 +91,16 @@ $(document).ready(function() {
     var coverArtists = $('#comic_cover_artists').val();
     var editorInChief = $('#comic_editor_in_chief').val();
     var tags = $('#comic_tags').val();
-    var annual = $('#comic_annual').val();
-    var owned = $('#comic_owned').val();
+    if ($('#comic_annual:checked').val() === 1){
+      var annual = $('#comic_annual:checked').val();
+    } else{
+      var annual = 0
+    }
+    if ($('#comic_owned:checked').val() === 1){
+      var owned = $('#comic_owned:checked').val();
+    } else{
+      var owned = 0
+    }
 
     $.ajax({
       url: formAction,
@@ -111,11 +119,11 @@ $(document).ready(function() {
           owned: owned
         }}
       })
-      var backToComicLink = $('a.back-to-comic').attr('href');
+      var backToComicLink = $('.edit_comic').attr('action')
 
       $.ajax({
-        url: backToComicLink,
-        method: get
+        url: formAction,
+        method: 'GET'
       }).done(function(data){
         $('.comic-details').html(data);
       })
