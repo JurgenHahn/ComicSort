@@ -92,32 +92,23 @@ $(document).ready(function() {
     var editorInChief = $('#comic_editor_in_chief').val();
     var tags = $('#comic_tags').val();
     if ($('#comic_annual:checked').val() === 1){
-      var annual = $('#comic_annual:checked').val();
+      var annual = 1;
     } else{
       var annual = 0
     }
     if ($('#comic_owned:checked').val() === 1){
-      var owned = $('#comic_owned:checked').val();
+      var owned = 1;
     } else{
       var owned = 0
     }
 
+    var form = $('.edit_comic').serialize();
     $.ajax({
       url: formAction,
       method: 'PATCH',
-      dataType: 'json',
-      data: {comic: {
-          volume: volume,
-          issue: issue,
-          cover_price: coverPrice,
-          price: price,
-          cover: cover,
-          cover_artists: coverArtists,
-          editor_in_chief: editorInChief,
-          tags: tags,
-          annual: annual,
-          owned: owned
-        }}
+      data: form,
+      dataType: 'json'
+
       })
       var backToComicLink = $('.edit_comic').attr('action')
 
