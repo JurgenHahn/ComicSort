@@ -98,8 +98,7 @@ $(document).ready(function() {
       method: 'DELETE'
     })
 
-    location.reload();
-
+    window.location.reload();
   });
 
   //show story
@@ -199,19 +198,27 @@ $(document).ready(function() {
   });
 
   // destroy story
-  // $('.comic-details').on('click', '.delete-story-link', function(event){
-  //   event.stopPropagation();
-  //   event.preventDefault();
-  //
-  //   var deleteAction = $('.delete-story-link').attr('href');
-  //   var test = 'test';
-  //
-  //   $.ajax({
-  //     url: deleteAction,
-  //     method: 'DELETE'
-  //   })
-  //
-  // });
+  $('.comic-details').on('click', '.delete-story-link', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    // $('delete-story-link').context.URL
+    var deleteAction = $('.delete-story-link').attr('href');
+    var storyData = $('.back-to-comic').attr('href');
+
+    $.ajax({
+      url: deleteAction,
+      method: 'DELETE'
+    });
+
+    $.ajax({
+      url: storyData,
+      method: 'GET'
+    }).done(function(data){
+      var div = $('<div>').html(data);
+      var comicDetails = $('.comic-wrapper', div.get(0));
+      $('.comic-details').html(comicDetails);
+    });
+  });
 
   //back to show story
   $('.comic-details').on('click', '.back-to-comic', function(event){
@@ -230,12 +237,16 @@ $(document).ready(function() {
   $('.comic-details-background').on('click', function(event) {
     $('.comic-details').fadeOut(400);
     $('.comic-details-background').fadeOut(400);
+
+    window.location.reload();
   });
 
   $('.comic-details').on('click', '.back-link', function(event) {
     event.preventDefault();
     $('.comic-details').fadeOut(400);
     $('.comic-details-background').fadeOut(400);
+
+    window.location.reload();
   });
 
 //allows the user to interact with the modal window
