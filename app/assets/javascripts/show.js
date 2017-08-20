@@ -87,13 +87,20 @@ $(document).ready(function() {
   });
 
   //destroy comic
-  // $('.comic-details').on('click', '.destroy-comic-link', function(event){
-  //   event.stopPropagation();
-  //
-  //   $('.comic-details').fadeOut(400);
-  //   $('.comic-details-background').fadeOut(400);
-  //
-  // });
+  $('.comic-details').on('click', '.delete-comic-link', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+
+    var deleteAction = $('.delete-comic-link').attr('href');
+
+    $.ajax({
+      url: deleteAction,
+      method: 'DELETE'
+    })
+
+    location.reload();
+
+  });
 
   //show story
   $('.comic-details').on('click', '.story-link', function(event){
@@ -190,6 +197,21 @@ $(document).ready(function() {
       $('.comic-details').html(data);
     })
   });
+
+  // destroy story
+  // $('.comic-details').on('click', '.delete-story-link', function(event){
+  //   event.stopPropagation();
+  //   event.preventDefault();
+  //
+  //   var deleteAction = $('.delete-story-link').attr('href');
+  //   var test = 'test';
+  //
+  //   $.ajax({
+  //     url: deleteAction,
+  //     method: 'DELETE'
+  //   })
+  //
+  // });
 
   //back to show story
   $('.comic-details').on('click', '.back-to-comic', function(event){

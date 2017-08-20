@@ -12,5 +12,5 @@
 
   <%= link_to 'Edit', edit_comic_story_path({:id => @story.id}), :class => 'edit-story-link'%> |
   <%= link_to 'Back', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}), :class => 'back-to-comic' %> |
-  <%= link_to 'Delete', [@comic, @story], method: :delete, data: {confirm: 'Are you sure?'}, :class =>'delete-comic-link' %>
+  <%= link_to 'Delete', [@comic, @story], method: :delete, data: {confirm: 'Are you sure?'}, :class =>'delete-story-link' %>
 </div>
