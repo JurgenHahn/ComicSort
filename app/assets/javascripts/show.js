@@ -11,7 +11,6 @@ $(document).ready(function() {
       url: showLink,
       method: 'GET'
     }).done(function(data) {
-      $('.comic-details').css('display', 'block');
       $('.comic-details').html(data);
     });
   });
@@ -26,7 +25,6 @@ $(document).ready(function() {
       url: nextLink,
       method: 'GET'
     }).done(function(data) {
-      $('.comic-details').css('display', 'block');
       $('.comic-details').html(data);
     });
   });
