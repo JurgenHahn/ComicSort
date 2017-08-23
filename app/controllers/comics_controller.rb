@@ -27,8 +27,6 @@ class ComicsController < ApplicationController
 
   end
 
-
-
   def need_list
     @comics = Comic.list_comics.where(owned: false)
   end

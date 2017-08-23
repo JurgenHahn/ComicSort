@@ -71,7 +71,6 @@ $(document).ready(function() {
 
         var formAction = $('.edit_comic').attr('action')
         var form = $('.edit_comic').serialize();
-        var backToComicLink = $('.back-to-comic').attr('href')
 
         $.ajax({
             url: formAction,
@@ -81,7 +80,7 @@ $(document).ready(function() {
         })
 
         $.ajax({
-            url: backToComicLink,
+            url: formAction,
             method: 'GET'
         }).done(function(data){
             $('.comic-details').html(data);
@@ -97,7 +96,8 @@ $(document).ready(function() {
 
         $.ajax({
             url: deleteAction,
-            method: 'DELETE'
+            method: 'DELETE',
+            dataType: 'JSON'
         })
 
         window.location.reload();
@@ -214,7 +214,8 @@ $(document).ready(function() {
 
         $.ajax({
             url: deleteAction,
-            method: 'DELETE'
+            method: 'DELETE',
+            dataType: 'JSON'
         });
 
         $.ajax({

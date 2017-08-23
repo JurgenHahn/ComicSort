@@ -59,7 +59,6 @@ class StoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comic_path(@story.comic), notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
-      # format.js { render :nothing => true }
     end
   end
 
