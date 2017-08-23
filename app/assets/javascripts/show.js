@@ -201,9 +201,8 @@ $(document).ready(function() {
   $('.comic-details').on('click', '.delete-story-link', function(event){
     event.stopPropagation();
     event.preventDefault();
-    // $('delete-story-link').context.URL
     var deleteAction = $('.delete-story-link').attr('href');
-    var storyData = $('.back-to-comic').attr('href');
+    var comicData = $('.back-to-comic').attr('href');
 
     $.ajax({
       url: deleteAction,
@@ -211,7 +210,7 @@ $(document).ready(function() {
     });
 
     $.ajax({
-      url: storyData,
+      url: comicData,
       method: 'GET'
     }).done(function(data){
       var div = $('<div>').html(data);

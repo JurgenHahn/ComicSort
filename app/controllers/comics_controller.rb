@@ -3,13 +3,10 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.json
   def index
-    @comics_1 = Comic.where(volume: params["volume"]).list_comics.limit(1)
 
     if request.xhr?
       respond_to do |format|
-        format.JSON {
-        render JSON: @comics_1[0]
-        }
+        format.json { render :nothing => true }
       end
     end
 
