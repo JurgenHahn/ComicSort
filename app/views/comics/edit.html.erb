@@ -1,9 +1,7 @@
 <div class="edit-comic-form">
-  <%= render 'form', comic: @comic %>
+    <%= render 'form', comic: @comic %>
 
-  <%= link_to 'Back', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}), :class => "back-to-comic"%>
+    <%= link_to 'Back', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}), :class => "back-to-comic"%>
 </div>
 
-
-<%= link_to 'Show', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}) %> |
-<%= link_to 'Back', comics_path({volume: @comic.volume}) %>
+    <%= link_to 'Index', comics_path({volume: @comic.volume}) %>
