@@ -53,6 +53,7 @@ class ComicsController < ApplicationController
   # POST /comics.json
   def create
     @comic = Comic.new(comic_params)
+    
     respond_to do |format|
       if @comic.save
         format.html { redirect_to comics_path({volume: @comic.volume}), notice: 'Comic was successfully created.' }
@@ -69,8 +70,9 @@ class ComicsController < ApplicationController
   # PATCH/PUT /comics/1.json
   def update
     respond_to do |format|
+
       if @comic.update(comic_params)
-        format.html { redirect_to comic_path({issue: @comic.issue, volume: @comic.volume}), notice: 'Comic was successfully updated.' }
+        format.html { redirect_to comic_path({issue: @comic.issue,  volume: @comic.volume}), notice: 'Comic was successfully updated.' }
         format.json { render :nothing => true }
       else
         format.html { render :edit }
@@ -85,7 +87,7 @@ class ComicsController < ApplicationController
     @comic.destroy
 
     respond_to do |format|
-      format.html { redirect_to comics_path({volume: @comic.volume}), notice: 'Comic was successfully destroyed.' }
+      format.html { redirect_to comics_path({volume: @comic.volume, annual: @comic.annual}), notice: 'Comic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

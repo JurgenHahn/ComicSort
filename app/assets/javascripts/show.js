@@ -41,7 +41,6 @@ $(document).ready(function() {
             url: previousLink,
             method: 'GET'
         }).done(function(data) {
-            $('.comic-details').css('display', 'block');
             $('.comic-details').html(data);
         });
     });
@@ -77,14 +76,15 @@ $(document).ready(function() {
             method: 'PATCH',
             data: form,
             dataType: 'json'
-        })
+        }).then(
 
-        $.ajax({
-            url: formAction,
-            method: 'GET'
-        }).done(function(data){
-            $('.comic-details').html(data);
-        })
+          $.ajax({
+              url: formAction,
+              method: 'GET'
+          }).done(function(data){
+              $('.comic-details').html(data);
+          })
+        )
     });
 
     //destroy comic
