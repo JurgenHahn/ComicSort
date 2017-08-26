@@ -222,10 +222,7 @@ $(document).ready(function() {
             url: comicData,
             method: 'GET'
         }).done(function(data){
-            var div = $('<div>').html(data);
-            var comicDetails = $('.comic-wrapper', div.get(0));
-
-            $('.comic-details').html(comicDetails);
+            $('.comic-details').html(data);
         });
     });
 
