@@ -76,7 +76,7 @@ $(document).ready(function() {
             method: 'PATCH',
             data: form,
             dataType: 'json'
-        }).then(
+        }).done(function(data){
 
           $.ajax({
               url: formAction,
@@ -84,7 +84,7 @@ $(document).ready(function() {
           }).done(function(data){
               $('.comic-details').html(data);
           })
-        )
+        });
     });
 
     //destroy comic

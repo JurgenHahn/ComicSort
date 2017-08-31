@@ -53,7 +53,7 @@ class ComicsController < ApplicationController
   # POST /comics.json
   def create
     @comic = Comic.new(comic_params)
-    
+
     respond_to do |format|
       if @comic.save
         format.html { redirect_to comics_path({volume: @comic.volume}), notice: 'Comic was successfully created.' }
@@ -73,7 +73,7 @@ class ComicsController < ApplicationController
 
       if @comic.update(comic_params)
         format.html { redirect_to comic_path({issue: @comic.issue,  volume: @comic.volume}), notice: 'Comic was successfully updated.' }
-        format.json { render :nothing => true }
+        format.json { render json: @comic }
       else
         format.html { render :edit }
         format.json { render json: @comic.errors, status: :unprocessable_entity }
