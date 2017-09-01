@@ -3,13 +3,10 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.json
   def index
-    @comics_1 = Comic.where(volume: params["volume"]).list_comics.limit(1)
 
     if request.xhr?
       respond_to do |format|
-        format.JSON {
-        render JSON: @comics_1[0]
-        }
+        format.json { render :nothing => true }
       end
     end
 
@@ -29,8 +26,6 @@ class ComicsController < ApplicationController
     # end
 
   end
-
-
 
   def need_list
     @comics = Comic.list_comics.where(owned: false)
@@ -58,6 +53,7 @@ class ComicsController < ApplicationController
   # POST /comics.json
   def create
     @comic = Comic.new(comic_params)
+
     respond_to do |format|
       if @comic.save
         format.html { redirect_to comics_path({volume: @comic.volume}), notice: 'Comic was successfully created.' }
@@ -74,9 +70,10 @@ class ComicsController < ApplicationController
   # PATCH/PUT /comics/1.json
   def update
     respond_to do |format|
+
       if @comic.update(comic_params)
-        format.html { redirect_to comic_path({issue: @comic.issue, volume: @comic.volume}), notice: 'Comic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comic }
+        format.html { redirect_to comic_path({issue: @comic.issue,  volume: @comic.volume}), notice: 'Comic was successfully updated.' }
+        format.json { render json: @comic }
       else
         format.html { render :edit }
         format.json { render json: @comic.errors, status: :unprocessable_entity }
@@ -90,7 +87,7 @@ class ComicsController < ApplicationController
     @comic.destroy
 
     respond_to do |format|
-      format.html { redirect_to comics_path({volume: @comic.volume}), notice: 'Comic was successfully destroyed.' }
+      format.html { redirect_to comics_path({volume: @comic.volume, annual: @comic.annual}), notice: 'Comic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -104,7 +101,6 @@ class ComicsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comic_params
       params.require(:comic).permit(:id,
-                                    :title,
                                     :tags,
                                     :cover_price,
                                     :volume,

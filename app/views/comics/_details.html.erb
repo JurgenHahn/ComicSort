@@ -8,7 +8,7 @@
   <p><strong>Stories: </strong></p>
 
   <p><% @comic.stories.each do |story| %>
-      <%= link_to story.title, comic_story_path({:comic_id => @comic.id, :id => story.id}), :class => 'story-link' %>
+      <%= link_to story.title, comic_story_path({:comic_id => @comic.id, :id => story.id}), :class => "story-link" %><br />
   <% end %></p>
 
   <p><strong>Tags: </strong><%= @comic.tags %></p>

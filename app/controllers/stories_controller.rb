@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-  before_action :set_comic, only: [:new, :create, :edit, :show, :update]
+  before_action :set_comic, only: [:new, :create, :edit, :show, :update, :index, :destroy]
   # GET /stories
   # GET /stories.json
   def index
@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @stories = @comic.stories.all
+    @comic = Comic.find(params[:comic_id])
   end
 
   # GET /stories/new
@@ -30,7 +30,7 @@ class StoriesController < ApplicationController
     respond_to do |format|
       if @story.save
         format.html { redirect_to @comic, notice: 'Story was successfully created.' }
-        format.json { render :show, status: :created, location: @story }
+        format.json { render :nothing => true }
       else
         format.html { render :new }
         format.json { render json: @story.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class StoriesController < ApplicationController
     respond_to do |format|
       if @story.update(story_params)
         format.html { redirect_to comic_story_path([@comic, @story]), notice: 'Story was successfully updated.' }
-        format.json { render :show, status: :ok, location: @story }
+        format.json { render json: @story }
       else
         format.html { render :edit }
         format.json { render json: @story.errors, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to comic_path(@story.comic), notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
