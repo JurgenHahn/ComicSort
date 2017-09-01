@@ -49,8 +49,8 @@ $(document).ready(function() {
             url: editHref,
             method: 'GET'
         }).done(function(data){
-            var div = $("<div>").html(data);
-            var editForm = $(".edit-comic-form", div.get(0));
+            var div = $('<div>').html(data);
+            var editForm = $('.edit-comic-form', div.get(0));
 
             $('.display-info').html(editForm);
         });

@@ -23,10 +23,7 @@ $(document).ready(function(){
             url: storyLink,
             method: 'GET'
         }).done(function(data){
-            var div = $('<div>').html(data);
-            var storyData = $(storyDetails, div.get(0));
-
-            $(displayInfo).html(storyData);
+          showStoryDetails(data);
         });
     });
 
@@ -109,10 +106,7 @@ $(document).ready(function(){
                 url: formAction,
                 method: 'GET'
             }).done(function(data){
-              var div = $('<div>').html(data);
-              var storyData = $(storyDetails, div.get(0));
-
-              $(displayInfo).html(storyData);
+              showStoryDetails(data);
             })
         });
   });
@@ -149,12 +143,14 @@ $(document).ready(function(){
             url: backToStoryHref,
             method: 'GET'
         }).done(function(data){
-
-            var div = $('<div>').html(data);
-            var storyData = $(storyDetails, div.get(0));
-
-            $(displayInfo).html(storyData);
+          showStoryDetails(data);
         });
     });
+
+    function showStoryDetails(data){
+      var div = $('<div>').html(data);
+      var storyData = $(storyDetails, div.get(0));
+      $(displayInfo).html(storyData);
+    }
 
 });
