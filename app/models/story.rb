@@ -1,3 +1,5 @@
 class Story < ApplicationRecord
-  belongs_to :comic
+  belongs_to :comic, required: false
+
+  validates :title, presence: true
 end

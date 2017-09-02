@@ -11,24 +11,24 @@ class ComicsController < ApplicationController
     end
 
     if params[:search]
-      @comics = Comic.search(params[:search]).list_comics
+      @comics = Comic.search(params[:search]).sort_comics
     elsif params[:annual]
       @comics = Comic.all.where(annual: true)
       @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
     else
-      @comics = Comic.where(annual: false).where(volume: params["volume"]).list_comics
+      @comics = Comic.where(annual: false).where(volume: params["volume"]).sort_comics
       @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
     end
 
     # if request.xhr?
-    #   @comics = Comic.where(volume: params["volume"]).list_comics.limit(1)
+    #   @comics = Comic.where(volume: params["volume"]).sort_comics.limit(1)
     #   render json: @comics
     # end
 
   end
 
   def need_list
-    @comics = Comic.list_comics.where(owned: false)
+    @comics = Comic.sort_comics.where(owned: false)
   end
   # GET /comics/1
   # GET /comics/1.json
@@ -44,6 +44,7 @@ class ComicsController < ApplicationController
 
   def new
     @comic = Comic.new
+    1.times { @comic.stories.build}
   end
 
   def edit
@@ -110,7 +111,15 @@ class ComicsController < ApplicationController
                                     :owned,
                                     :annual,
                                     :cover_artists,
-                                    :editor_in_chief)
+                                    :editor_in_chief,
+                                    stories_attributes: [ :id,
+                                                          :title,
+                                                          :writers,
+                                                          :pencilers,
+                                                          :inkers,
+                                                          :colourists,
+                                                          :letterers,
+                                                          :editors])
 
     end
 end

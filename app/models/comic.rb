@@ -1,8 +1,9 @@
 class Comic < ApplicationRecord
 
   has_many :stories, dependent: :destroy
+  accepts_nested_attributes_for :stories
 
-  def self.list_comics
+  def self.sort_comics
     Comic.all.order(:volume).order(:issue)
   end
 
