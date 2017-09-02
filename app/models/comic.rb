@@ -3,6 +3,14 @@ class Comic < ApplicationRecord
     has_many :stories, dependent: :destroy
     accepts_nested_attributes_for :stories
 
+    def self.descending_order(params)
+      Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]})
+    end
+
+    def self.ascending_order(params)
+      Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]})
+    end
+
     def self.sort_comics
         Comic.all.order(:volume).order(:issue)
     end

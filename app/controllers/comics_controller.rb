@@ -1,4 +1,5 @@
 class ComicsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
   before_action :set_comic, only: [:show, :edit, :update, :destroy]
   # GET /comics
   # GET /comics.json
@@ -15,6 +16,7 @@ class ComicsController < ApplicationController
     elsif params[:annual]
       @comics = Comic.all.where(annual: true)
       @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
+
     else
       @comics = Comic.where(annual: false).where(volume: params["volume"]).sort_comics
       @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
@@ -34,8 +36,8 @@ class ComicsController < ApplicationController
   # GET /comics/1.json
   def show
       @stories = @comic.stories
-      @previous_comic = Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).next_in_descending_order
-      @next_comic = Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).next_in_ascending_order
+      @previous_comic = Comic.descending_order({issue: params[:issue], volume: params[:volume]}).next_in_descending_order
+      @next_comic = Comic.ascending_order({issue: params[:issue], volume: params[:volume]}).next_in_ascending_order
 
     if request.xhr?
       render layout: false

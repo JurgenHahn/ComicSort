@@ -1,8 +1,4 @@
-<% this_many = number_with_precision(@percentage_owned, :precision => 2, strip_insignificant_zeros: true) %>
-
 <div class="stats">
-  You own <%= @comics.where(owned: true).count %> / <%= @comics.count %> of these issues.
-  <% unless @comics.count < 1 %>
-    ( <%= this_many %>% )
-  <% end %>
+    You own <%= @comics.where(owned: true).count %> / <%= @comics.count %> of these issues.
+    <% if @comics.count > 0 %> ( <%= number_with_precision(@percentage_owned, precision: 2, strip_insignificant_zeros: true)%> % ) <% end %>
 </div>

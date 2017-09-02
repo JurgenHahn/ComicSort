@@ -1,17 +1,17 @@
 <p>
-    <%= link_to 'Add Story', new_comic_story_path(@comic, @story), :class => 'add-story-link' %> |
-    <%= link_to 'Back', comics_path({:volume => @comic.volume}), :class => 'back-link' %> |
-    <%= link_to 'Edit', edit_comic_path(@comic), :class => 'edit-comic-link' %> |
-    <%= link_to 'Delete', @comic, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'delete-comic-link' %></p>
+    <%= link_to 'Add Story', new_comic_story_path(@comic, @story), class: 'add-story-link' %> |
+    <%= link_to 'Back', comics_path({volume: @comic.volume}), class: 'back-link' %> |
+    <%= link_to 'Edit', edit_comic_path(@comic), class: 'edit-comic-link' %> |
+    <%= link_to 'Delete', @comic, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-comic-link' %></p>
 <p>
     <%unless @previous_comic.nil? %>
-      <%= link_to 'Previous Issue', comic_path(:id => @previous_comic.id, :volume =>@previous_comic.volume, :issue => @previous_comic.issue), :class =>"previous-link" %>
+      <%= link_to 'Previous Issue', comic_path(id: @previous_comic.id, volume: @previous_comic.volume, issue: @previous_comic.issue), class: "previous-link" %>
     <%else%>
       Previous Issue
     <%end%>
       |
     <%unless @next_comic.nil? %>
-      <%= link_to 'Next Issue', comic_path(:id => @next_comic.id, :volume =>@next_comic.volume, :issue => @next_comic.issue), :class =>'next-link' %>
+      <%= link_to 'Next Issue', comic_path(id: @next_comic.id, volume: @next_comic.volume, issue: @next_comic.issue), class: 'next-link' %>
     <%else%>
       Next Issue
     <%end%>
