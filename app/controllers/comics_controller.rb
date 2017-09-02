@@ -11,31 +11,31 @@ class ComicsController < ApplicationController
     end
 
     if params[:search]
-      @comics = Comic.search(params[:search]).list_comics
+      @comics = Comic.search(params[:search]).sort_comics
     elsif params[:annual]
       @comics = Comic.all.where(annual: true)
       @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
     else
-      @comics = Comic.where(annual: false).where(volume: params["volume"]).list_comics
+      @comics = Comic.where(annual: false).where(volume: params["volume"]).sort_comics
       @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
     end
 
     # if request.xhr?
-    #   @comics = Comic.where(volume: params["volume"]).list_comics.limit(1)
+    #   @comics = Comic.where(volume: params["volume"]).sort_comics.limit(1)
     #   render json: @comics
     # end
 
   end
 
   def need_list
-    @comics = Comic.list_comics.where(owned: false)
+    @comics = Comic.sort_comics.where(owned: false)
   end
   # GET /comics/1
   # GET /comics/1.json
   def show
       @stories = @comic.stories
-      @previous_comic = (Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).order('volume DESC').order('issue DESC').limit(1))[0]
-      @next_comic = (Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).order('volume').order('issue').limit(1))[0]
+      @previous_comic = Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).next_in_descending_order
+      @next_comic = Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).next_in_ascending_order
 
     if request.xhr?
       render layout: false
@@ -44,6 +44,7 @@ class ComicsController < ApplicationController
 
   def new
     @comic = Comic.new
+    1.times { @comic.stories.build}
   end
 
   def edit
@@ -110,7 +111,15 @@ class ComicsController < ApplicationController
                                     :owned,
                                     :annual,
                                     :cover_artists,
-                                    :editor_in_chief)
+                                    :editor_in_chief,
+                                    stories_attributes: [ :id,
+                                                          :title,
+                                                          :writers,
+                                                          :pencilers,
+                                                          :inkers,
+                                                          :colourists,
+                                                          :letterers,
+                                                          :editors])
 
     end
 end

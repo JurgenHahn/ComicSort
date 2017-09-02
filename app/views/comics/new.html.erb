@@ -43,6 +43,43 @@
         <%= f.text_field :cover_artists, class: 'input-field'  %>
       </div>
 
+          <%= f.fields_for :stories do |stories_form| %>
+              <div class="field form-group">
+                <%= stories_form.label :title, "Title", class: 'control-label' %>
+                <%= stories_form.text_field :title, class: 'input-field'  %>
+              </div>
+
+              <div class="field form-group">
+                <%= stories_form.label :writers, "Writers", class: 'control-label' %>
+                <%= stories_form.text_field :writers, class: 'input-field'  %>
+              </div>
+
+              <div class="field form-group">
+                <%= stories_form.label :pencilers, "Pencilers", class: 'control-label' %>
+                <%= stories_form.text_field :pencilers, class: 'input-field'  %>
+              </div>
+
+              <div class="field form-group">
+                <%= stories_form.label :inkers, "Inkers", class: 'control-label' %>
+                <%= stories_form.text_field :inkers, class: 'input-field'  %>
+              </div>
+
+              <div class="field form-group">
+                <%= stories_form.label :colourists, "Colourists", class: 'control-label' %>
+                <%= stories_form.text_field :colourists, class: 'input-field'  %>
+              </div>
+
+              <div class="field form-group">
+                <%= stories_form.label :letterers, "Letterers", class: 'control-label' %>
+                <%= stories_form.text_field :letterers, class: 'input-field'  %>
+              </div>
+
+              <div class="field form-group">
+                <%= stories_form.label :editors, "Editors", class: 'control-label' %>
+                <%= stories_form.text_field :editors, class: 'input-field'  %>
+              </div>
+          <% end %>
+
       <div class="field form-group">
         <%= f.label :editor_in_chief, "Editor-in-Chief", class: 'control-label' %>
         <%= f.text_field :editor_in_chief, class: 'input-field'  %>
