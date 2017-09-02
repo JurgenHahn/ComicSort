@@ -34,8 +34,8 @@ class ComicsController < ApplicationController
   # GET /comics/1.json
   def show
       @stories = @comic.stories
-      @previous_comic = (Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).order('volume DESC').order('issue DESC').limit(1))[0]
-      @next_comic = (Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).order('volume').order('issue').limit(1))[0]
+      @previous_comic = Comic.where("(volume == :volume AND issue < :issue) OR volume < :volume", {issue: params[:issue], volume: params[:volume]}).next_in_descending_order
+      @next_comic = Comic.where("(volume == :volume AND issue > :issue) OR volume > :volume", {issue: params[:issue], volume: params[:volume]}).next_in_ascending_order
 
     if request.xhr?
       render layout: false
