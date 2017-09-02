@@ -1,7 +1,7 @@
 <h1>Editing Story</h1>
 <div class="edit-story-form">
   <%= render 'form', story: @story %>
-  <%= link_to 'Back', comic_story_path, :class => "back-to-story"%>
+  <%= link_to 'Back', comic_story_path, class: "back-to-story"%>
 </div>
 
 <%= link_to 'Back', comic_story_path([@comic, @story]) %>
