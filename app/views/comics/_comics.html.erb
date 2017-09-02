@@ -6,9 +6,9 @@
 <div class="container">
     <% @comics.each do |comic| %>
         <div class="col-xs-3">
-            <!-- displays transparent thumb-nail if owned == false -->
-            <div class="thumb-nail <% if comic.owned == false %> unowned"> <% else %> "> <% end %>
-                <div><%= link_to image_tag("#{comic.cover}", :class => "img-responsive"), comic_path(comic, {:issue => comic.issue, :volume => comic.volume}) %></div>
+            <!-- displays transparent thumb-nail unless comic is owned -->
+            <div class="thumb-nail <% unless comic.owned %> unowned <% end %> ">
+                <div><%= link_to image_tag("#{comic.cover}", :class => "img-responsive"), comic_path(comic, {issue: comic.issue, volume: comic.volume}) %></div>
                 <div>Vol.<%= comic.volume %> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
             </div>
         </div>
