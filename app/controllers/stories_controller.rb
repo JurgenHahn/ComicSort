@@ -66,12 +66,11 @@ class StoriesController < ApplicationController
     def set_comic
       @comic = Comic.find(params[:comic_id])
     end
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_story
       @story = Story.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
       params.require(:story).permit(:id,
                                     :title,

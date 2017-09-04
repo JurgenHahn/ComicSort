@@ -68,7 +68,7 @@ class ComicsController < ApplicationController
     def update
         respond_to do |format|
             if @comic.update(comic_params)
-                format.html { redirect_to comic_path({issue: @comic.issue,  volume: @comic.volume}), notice: 'Comic was successfully updated.' }
+                format.html { redirect_to comic_path(@comic), notice: 'Comic was successfully updated.' }
                 format.json { render json: @comic }
             else
                 format.html { render :edit }
