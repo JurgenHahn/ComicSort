@@ -1,5 +1,5 @@
 <div class="edit-comic-form">
-  <%= form_for @comic, :url => comic_path({:volume => @comic.volume, :issue => @comic.issue}) do |f| %>
+  <%= form_for @comic do |f| %>
       <% if @comic.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
@@ -66,7 +66,7 @@
       </div>
   <%end%>
 
-    <%= link_to 'Back', comic_path(@comic, {:issue => @comic.issue, :volume => @comic.volume}), :class => "back-to-comic"%>
+    <%= link_to 'Back', comic_path(@comic), :class => "back-to-comic"%>
 </div>
 
     <%= link_to 'Index', comics_path({volume: @comic.volume}) %>

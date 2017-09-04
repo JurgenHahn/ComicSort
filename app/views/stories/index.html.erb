@@ -13,7 +13,7 @@
     <% @stories.each do |story| %>
       <tr>
         <td><%= link_to 'Show', comic_story_path(@comic, story) %></td>
-        <td><%= link_to 'Edit', edit_comic_story_path(@comic,story) %></td>
+        <td><%= link_to 'Edit', edit_comic_story_path(@comic, story) %></td>
         <td><%= link_to 'Destroy', [@comic, story], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

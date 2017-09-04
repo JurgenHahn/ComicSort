@@ -17,10 +17,10 @@ $(document).ready(function(){
         event.stopPropagation();
         event.preventDefault();
 
-        var storyLink = $(this).attr('href');
+        var storyHref = $(this).attr('href');
 
         $.ajax({
-            url: storyLink,
+            url: storyHref,
             method: 'GET'
         }).done(function(data){
           showStoryDetails(data);
@@ -122,7 +122,7 @@ $(document).ready(function(){
         $.ajax({
             url: deleteAction,
             method: 'DELETE',
-            dataType: 'JSON'
+            dataType: 'json'
         });
 
         $.ajax({

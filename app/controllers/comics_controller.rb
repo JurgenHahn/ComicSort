@@ -1,25 +1,23 @@
 class ComicsController < ApplicationController
-    include ActionView::Helpers::NumberHelper
     before_action :set_comic, only: [:show, :edit, :update, :destroy]
     # GET /comics
     # GET /comics.json
     def index
-
       if request.xhr?
           respond_to do |format|
               format.json { render :nothing => true }
           end
       end
 
-        if params[:search]
-            @comics = Comic.search(params[:search]).sort_comics
-        elsif params[:annual]
-            @comics = Comic.all.where(annual: true)
-            @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
-        else
-            @comics = Comic.where(annual: false).where(volume: params["volume"]).sort_comics
-            @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
-        end
+      if params[:search]
+          @comics = Comic.search(params[:search]).sort_comics
+      elsif params[:annual]
+          @comics = Comic.all.where(annual: true)
+      else
+          @comics = Comic.where(annual: false).where(volume: params["volume"]).sort_comics
+      end
+
+      @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
 
       # if request.xhr?
       #   @comics = Comic.where(volume: params["volume"]).sort_comics.limit(1)
@@ -34,9 +32,8 @@ class ComicsController < ApplicationController
     # GET /comics/1.json
     def show
         @stories = @comic.stories
-        @previous_comic = Comic.previous_comic({issue: params[:issue], volume: params[:volume]})
-        @next_comic = Comic.next_comic({issue: params[:issue], volume: params[:volume]})
-
+        @previous_comic = Comic.previous_comic(@comic.volume, @comic.issue)
+        @next_comic = Comic.next_comic(@comic.volume, @comic.issue)
         if request.xhr?
             render layout: false
         end
@@ -44,7 +41,7 @@ class ComicsController < ApplicationController
 
     def new
         @comic = Comic.new
-        1.times { @comic.stories.build}
+        1.times { @comic.stories.build }
     end
 
     def edit
@@ -92,12 +89,10 @@ class ComicsController < ApplicationController
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
       def set_comic
           @comic = Comic.find(params[:id])
       end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
       def comic_params
           params.require(:comic).permit(:id,
                                         :tags,
@@ -110,14 +105,14 @@ class ComicsController < ApplicationController
                                         :annual,
                                         :cover_artists,
                                         :editor_in_chief,
-                                        stories_attributes: [ :id,
-                                                              :title,
-                                                              :writers,
-                                                              :pencilers,
-                                                              :inkers,
-                                                              :colourists,
-                                                              :letterers,
-                                                              :editors])
+                                        stories_attributes:[:id,
+                                                            :title,
+                                                            :writers,
+                                                            :pencilers,
+                                                            :inkers,
+                                                            :colourists,
+                                                            :letterers,
+                                                            :editors])
 
         end
 end

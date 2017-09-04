@@ -1,16 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<!-- Notice to user if search returns no results -->
 <% if @comics.blank? %>
-  <h4>There are no comics containing the term <%= params[:search] %>.</h4>
+    <h4>There are no comics containing the term <%= params[:search] %>.</h4>
 <% end %>
 
-<h1 id="volume-title">The Amazing Spider-Man Volume <%= params["volume"] %></h1>
+<% unless @comics.blank? %>
+    <h1 id="volume-title">The Amazing Spider-Man Volume <%= params["volume"] %></h1>
 
-<%= render 'stats' %>
+    <%= render 'stats' %>
 
-<%= render 'comics' %>
-
-<!-- passes the current volume to index.js to use as a param in ajax calls -->
-<%= content_tag :div, id: "volume-variable", data: {volume: params["volume"]} do %>
+    <%= render 'comics' %>
 <%end%>
