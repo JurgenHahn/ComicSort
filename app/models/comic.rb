@@ -8,12 +8,16 @@ class Comic < ApplicationRecord
     end
 
     def self.previous_comic(volume, issue)
-        Comic.where("(volume == ? AND issue < ?) OR volume < ?", "#{volume}", "#{issue}", "#{volume}").order("volume DESC").order("issue DESC").first
+        Comic.where("(volume == ? AND issue < ?) OR volume < ?", "#{volume}", "#{issue}", "#{volume}").order("volume").order("issue").last
     end
 
     def self.next_comic(volume, issue)
         Comic.where("(volume == ? AND issue > ?) OR volume > ?", "#{volume}", "#{issue}", "#{volume}").order("volume").order("issue").first
     end
+
+    # def self.order
+    #     Comic.order("volume").order("issue")
+    # end
 
     def self.search(search)
         Comic.joins('LEFT JOIN stories ON comics.id = stories.comic_id').where("writers LIKE ? OR
