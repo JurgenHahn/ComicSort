@@ -10,23 +10,23 @@ class ComicsController < ApplicationController
       end
 
       if params[:search]
-          @comics = Comic.search(params[:search]).sort_comics
+          @comics = Comic.search(params[:search]).arrange
       elsif params[:annual]
-          @comics = Comic.all.where(annual: true)
+          @comics = Comic.all.where(annual: true).arrange
       else
-          @comics = Comic.where(annual: false).where(volume: params["volume"]).sort_comics
+          @comics = Comic.where(annual: false).where(volume: params["volume"]).arrange
       end
 
       @percentage_owned = @comics.where(owned: true).count.to_f/@comics.count.to_f*100
 
       # if request.xhr?
-      #   @comics = Comic.where(volume: params["volume"]).sort_comics.limit(1)
+      #   @comics = Comic.where(volume: params["volume"]).arrange.limit(1)
       #   render json: @comics
       # end
     end
 
     def need_list
-        @comics = Comic.sort_comics.where(owned: false)
+        @comics = Comic.arrange.where(owned: false)
     end
     # GET /comics/1
     # GET /comics/1.json

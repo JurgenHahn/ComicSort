@@ -3,21 +3,17 @@ class Comic < ApplicationRecord
     has_many :stories, dependent: :destroy
     accepts_nested_attributes_for :stories
 
-    def self.sort_comics
-      Comic.all.order(:volume).order(:issue)
+    def self.arrange
+      Comic.order("volume").order("issue")
     end
 
     def self.previous_comic(volume, issue)
-        Comic.where("(volume == ? AND issue < ?) OR volume < ?", "#{volume}", "#{issue}", "#{volume}").order("volume").order("issue").last
+        Comic.where("(volume == ? AND issue < ?) OR volume < ?", "#{volume}", "#{issue}", "#{volume}").arrange.last
     end
 
     def self.next_comic(volume, issue)
-        Comic.where("(volume == ? AND issue > ?) OR volume > ?", "#{volume}", "#{issue}", "#{volume}").order("volume").order("issue").first
+        Comic.where("(volume == ? AND issue > ?) OR volume > ?", "#{volume}", "#{issue}", "#{volume}").arrange.first
     end
-
-    # def self.order
-    #     Comic.order("volume").order("issue")
-    # end
 
     def self.search(search)
         Comic.joins('LEFT JOIN stories ON comics.id = stories.comic_id').where("writers LIKE ? OR
