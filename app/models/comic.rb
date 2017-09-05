@@ -4,15 +4,15 @@ class Comic < ApplicationRecord
     accepts_nested_attributes_for :stories
 
     def self.arrange
-      Comic.order("volume").order("issue")
+        Comic.order("volume").order("issue")
     end
 
-    def self.previous_comic(volume, issue)
-        Comic.where("(volume == ? AND issue < ?) OR volume < ?", "#{volume}", "#{issue}", "#{volume}").arrange.last
+    def self.previous_comic(volume, issue, annual)
+        Comic.where("(volume == ? AND issue < ? OR volume < ?) AND annual == ?", "#{volume}", "#{issue}", "#{volume}", "#{annual.to_s[0]}").arrange.last
     end
 
-    def self.next_comic(volume, issue)
-        Comic.where("(volume == ? AND issue > ?) OR volume > ?", "#{volume}", "#{issue}", "#{volume}").arrange.first
+    def self.next_comic(volume, issue, annual)
+        Comic.where("(volume == ? AND issue > ? OR volume > ?) AND annual == ?", "#{volume}", "#{issue}", "#{volume}", "#{annual.to_s[0]}").arrange.first
     end
 
     def self.search(search)

@@ -12,7 +12,7 @@ class ComicsController < ApplicationController
       if params[:search]
           @comics = Comic.search(params[:search]).arrange
       elsif params[:annual]
-          @comics = Comic.all.where(annual: true).arrange
+          @comics = Comic.where(annual: true).arrange
       else
           @comics = Comic.where(annual: false).where(volume: params["volume"]).arrange
       end
@@ -26,14 +26,14 @@ class ComicsController < ApplicationController
     end
 
     def need_list
-        @comics = Comic.arrange.where(owned: false)
+        @comics = Comic.where(owned: false).arrange
     end
     # GET /comics/1
     # GET /comics/1.json
     def show
         @stories = @comic.stories
-        @previous_comic = Comic.previous_comic(@comic.volume, @comic.issue)
-        @next_comic = Comic.next_comic(@comic.volume, @comic.issue)
+        @previous_comic = Comic.previous_comic(@comic.volume, @comic.issue, @comic.annual)
+        @next_comic = Comic.next_comic(@comic.volume, @comic.issue, @comic.annual)
         if request.xhr?
             render layout: false
         end
