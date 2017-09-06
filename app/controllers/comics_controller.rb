@@ -40,6 +40,7 @@ class ComicsController < ApplicationController
     end
 
     def new
+        @new_comic_form = 'true'
         @comic = Comic.new
         1.times { @comic.stories.build }
     end
