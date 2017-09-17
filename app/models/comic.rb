@@ -1,5 +1,8 @@
 class Comic < ApplicationRecord
 
+    mount_uploader :cover, CoverUploader
+    mount_base64_uploader :cover, CoverUploader
+
     has_many :stories, dependent: :destroy
     accepts_nested_attributes_for :stories
 
