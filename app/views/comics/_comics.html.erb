@@ -8,7 +8,7 @@
         <div class="col-xs-3">
             <!-- displays transparent thumb-nail unless comic is owned -->
             <div class="thumb-nail <% unless comic.owned %> unowned <% end %> ">
-                <div><%= link_to image_tag("#{comic.cover}", :class => "img-responsive"), comic_path(comic) %></div>
+                <div><%= link_to image_tag("#{comic.cover.url}", :class => "img-responsive"), comic_path(comic) %></div>
                 <div>Vol.<%= comic.volume %> #<%= number_with_precision(comic.issue, strip_insignificant_zeros: true) %></div>
             </div>
         </div>

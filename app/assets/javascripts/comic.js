@@ -61,8 +61,27 @@ $(document).ready(function() {
         event.stopPropagation();
         event.preventDefault();
 
+
         var formAction = $(editComicForm).attr('action')
         var form = $(editComicForm).serialize();
+
+        // var encodedData;
+        // var domElement = $('#comic_cover')[0].files[0];
+        // var fr = new FileReader();
+        // fr.readAsDataURL(domElement);
+        // fr.onload = function(){
+        //   console.log(this.result);
+        //   encodedData = this.result;
+
+          // console.log(encodedData);
+          // var coverParam = 'comic%5Bcover%5D=' + encodedData;
+          // var updatedForm = form + "&" + coverParam;
+
+        // };
+        // console.log(encodedData);
+        // var coverParam = 'comic%5Bcover%5D=' + encodedData;
+        // var updatedForm = form + "&" + coverParam;
+
 
         $.ajax({
             url: formAction,

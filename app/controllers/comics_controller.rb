@@ -46,6 +46,7 @@ class ComicsController < ApplicationController
     end
 
     def edit
+
     end
 
     # POST /comics
@@ -58,6 +59,7 @@ class ComicsController < ApplicationController
               format.html { redirect_to comics_path({volume: @comic.volume}), notice: 'Comic was successfully created.' }
               format.json { render :show, status: :created, location: @comic }
           else
+              @new_comic_form = 'true'
               format.html { render :new }
               format.json { render json: @comic.errors, status: :unprocessable_entity }
           end
@@ -102,6 +104,7 @@ class ComicsController < ApplicationController
                                         :issue,
                                         :price,
                                         :cover,
+                                        :cover_cache,
                                         :owned,
                                         :annual,
                                         :cover_artists,
