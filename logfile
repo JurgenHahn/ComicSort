@@ -1,0 +1,27 @@
+LOG:  database system was shut down at 2017-09-17 14:29:21 EDT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  database "my_database_development" already exists
+STATEMENT:  CREATE DATABASE "my_database_development" ENCODING = 'utf8'
+ERROR:  column "issue" cannot be cast automatically to type double precision
+HINT:  You might need to specify "USING issue::double precision".
+STATEMENT:  ALTER TABLE "comics" ALTER COLUMN "issue" TYPE float
+ERROR:  column "issue" cannot be cast automatically to type double precision
+HINT:  You might need to specify "USING issue::double precision".
+STATEMENT:  ALTER TABLE "comics" ALTER COLUMN "issue" TYPE float
+ERROR:  operator does not exist: integer == unknown at character 49
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT  "comics".* FROM "comics" WHERE ((volume == '4' AND issue < '200.0' OR volume < '4') AND annual == 'f') ORDER BY volume DESC, issue DESC LIMIT $1
+ERROR:  operator does not exist: integer == unknown at character 49
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT  "comics".* FROM "comics" WHERE ((volume == '4' AND issue < '200.0' OR volume < '4') AND annual == 'f') ORDER BY volume DESC, issue DESC LIMIT $1
+ERROR:  operator does not exist: integer == unknown at character 49
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT  "comics".* FROM "comics" WHERE ((volume == '4' AND issue < '200.0' OR volume < '4') AND annual == 'f') ORDER BY volume DESC, issue DESC LIMIT $1
+ERROR:  operator does not exist: integer == unknown at character 49
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT  "comics".* FROM "comics" WHERE ((volume == '4' AND issue < '200.0' OR volume < '4') AND annual == 'f') ORDER BY volume DESC, issue DESC LIMIT $1
+ERROR:  operator does not exist: integer == unknown at character 49
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT  "comics".* FROM "comics" WHERE ((volume == '4' AND issue < '200.0' OR volume < '4') AND annual == 'f') ORDER BY volume DESC, issue DESC LIMIT $1

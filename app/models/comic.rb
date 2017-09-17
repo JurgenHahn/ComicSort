@@ -11,11 +11,11 @@ class Comic < ApplicationRecord
     end
 
     def self.previous_comic(volume, issue, annual)
-        Comic.where("(volume == ? AND issue < ? OR volume < ?) AND annual == ?", "#{volume}", "#{issue}", "#{volume}", "#{annual.to_s[0]}").arrange.last
+        Comic.where("(volume = ? AND issue < ? OR volume < ?) AND annual = ?", "#{volume}", "#{issue}", "#{volume}", "#{annual.to_s[0]}").arrange.last
     end
 
     def self.next_comic(volume, issue, annual)
-        Comic.where("(volume == ? AND issue > ? OR volume > ?) AND annual == ?", "#{volume}", "#{issue}", "#{volume}", "#{annual.to_s[0]}").arrange.first
+        Comic.where("(volume = ? AND issue > ? OR volume > ?) AND annual = ?", "#{volume}", "#{issue}", "#{volume}", "#{annual.to_s[0]}").arrange.first
     end
 
     def self.search(search)
