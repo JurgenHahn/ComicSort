@@ -21,7 +21,11 @@ test:
   timeout: 5000
 
 production:
+  <<: *default
+  host: localhost
   adapter: postgresql
-  database: my_database_development
+  encoding: utf8
+  database: comicsort_production
   pool: 5
-  timeout: 5000
+  username: <%= ENV['COMICSORT_DATABASE_USER'] %>
+  password: <%= ENV['COMICSORT_DATABASE_PASSWORD'] %>
