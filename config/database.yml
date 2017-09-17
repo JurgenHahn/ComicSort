@@ -9,7 +9,10 @@ default: &default
   database: my_database_development
   pool: 5
   timeout: 5000
-  
+  host: localhost
+  username: root
+  password: root
+ 
 development:
   adapter: postgresql
   database: my_database_development
