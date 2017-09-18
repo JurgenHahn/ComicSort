@@ -1,7 +1,7 @@
 class CoverUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [300, 455]
+  process resize_to_fill: [300, 455]
 
 
   # Include RMagick or MiniMagick support:
